@@ -12,7 +12,8 @@ const Navbar = () => {
   const navbar = `
         <div class="navbar bg-base-100">
     <div class="navbar-start">
-      
+      <button class="btn btn-ghost" href="#" data-uri="/rank">Rank</button>
+      <button class="btn btn-ghost" href="#" data-uri="/rule">Rules</button>
     </div>
     <div class="navbar-center">
       <a class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" >BattleShip</a>
