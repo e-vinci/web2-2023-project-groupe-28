@@ -1,0 +1,6 @@
+body {
+    background-image: url(../img/wireframe_img/waves.png), url(../img/wireframe_img/battleship.png);
+    background-position: none, center;
+    background-size: auto, auto;
+    background-repeat: no-repeat, no-repeat;
+}
