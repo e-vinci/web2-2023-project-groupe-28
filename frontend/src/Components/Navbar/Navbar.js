@@ -16,7 +16,8 @@ const Navbar = () => {
       <button class="btn btn-ghost" href="#" data-uri="/rule">Rules</button>
     </div>
     <div class="navbar-center">
-      <a class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" >BattleShip</a>
+    
+    <a class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" >BattleShip</a>
     </div>
     <div class="navbar-end">
       <button class="btn btn-ghost" href="#" data-uri="/game">Game</button>

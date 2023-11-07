@@ -2,9 +2,9 @@ const LoginPage = () => {
     const main = document.querySelector('main');
     const login = `
     <div class="justify-self-center">
-    <div class="hero-content flex-col lg:flex-row-reverse scale-110" >
+    <div class="hero-content flex-col lg:flex-row-reverse scale-110" style="padding-top: 50%;">
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-0">
-        <form class="card-body" style="padding-top: 50%;">
+        <form class="card-body" >
           <div class="form-control">
             <h1>Login</h1>
             <label class="label">
