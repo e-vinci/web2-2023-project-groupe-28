@@ -18,7 +18,7 @@ const LoginPage = () => {
             </label>
             <input type="password" placeholder="password" class="input input-bordered" required />
             <label class="label">
-              <a href="#" class="label-text-alt link link-hover">Forgot password?</a>
+              <a href="#" class="label-text-alt link link-hover">have you already an account ?</a>
             </label>
           </div>
           <div class="form-control mt-6">
