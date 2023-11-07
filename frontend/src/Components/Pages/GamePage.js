@@ -5,7 +5,7 @@ let game;
 
 const GamePage = () => {
   const phaserGame = `
-<div id="gameDiv" class="d-flex justify-content-center my-3">
+<div id="gameDiv" class="justify-self-center"">
 </div>`;
 
   const main = document.querySelector('main');
