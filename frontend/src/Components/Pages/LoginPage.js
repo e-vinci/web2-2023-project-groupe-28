@@ -6,6 +6,7 @@ const LoginPage = () => {
       <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-0">
         <form class="card-body" style="padding-top: 50%;">
           <div class="form-control">
+            <h1>Login</h1>
             <label class="label">
               <span class="label-text">Email</span>
             </label>
