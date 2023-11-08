@@ -9,7 +9,13 @@ html {
     background-repeat: no-repeat, no-repeat;
 }
 
+li{
+    margin-right: 10px;
+}
 
+li, a{
+    text-align: center;
+}
   
   footer {
     position: fixed;

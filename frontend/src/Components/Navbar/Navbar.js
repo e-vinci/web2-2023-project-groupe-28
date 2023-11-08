@@ -25,9 +25,6 @@ const Navbar = () => {
       <button class="btn btn-ghost" href="#" data-uri="/new">New Page</button>
       <button class="btn btn-ghost" href="#" data-uri="/login">Login</button>
       <button class="btn btn-ghost" href="#" data-uri="/register">Register</button>
-      
-
-      
 
     </div>
   </div>

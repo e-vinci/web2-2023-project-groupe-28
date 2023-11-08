@@ -7,12 +7,14 @@
  * - the router will show the Page associated to this URI when the user click on a nav-link
  */
 
+// Creation du footer
+
 const Footer = () => {
     const footerWrapper = document.querySelector('#footerWrapper');
     const footer = `
-        <div class="dropdown dropdown-hover dropdown-top">
+        <div class="dropdown dropdown-hover dropdown-right">
             <label data-theme="luxury" tabindex="0" class="btn m-1">Themes</label>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52" style="display: flex; flex-direction: row; width: 100vw;">
 
                 <li><a data-theme="luxury">luxury</a></li> 
                 <li><a data-theme="forest">forest</a></li>
