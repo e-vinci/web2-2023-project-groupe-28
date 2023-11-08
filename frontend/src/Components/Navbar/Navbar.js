@@ -52,38 +52,6 @@ const Navbar = () => {
           </ul>
       </div>
 
-            <!-- You can open the modal using ID.showModal() method -->
-      <button class="btn" onclick="my_modal_3.showModal()">open modal</button>
-      <dialog id="my_modal_3" class="modal">
-        <div class="modal-box">
-          <form method="dialog">
-            <button class="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-          </form>
-          <h3 class="font-bold text-lg">Hello!</h3>
-          <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-
-            <li><a data-theme="luxury">luxury</a></li> 
-            <li><a data-theme="forest">forest</a></li>
-            <li><a data-theme="dark">dark</a></li> 
-
-            <li><a data-theme="synthwave">synthwave</a></li>
-            <li><a data-theme="halloween">halloween</a></li>
-            <li><a data-theme="black">black</a></li>
-
-            <li><a data-theme="dracula">dracula</a></li>
-            <li><a data-theme="business">business</a></li>
-            <li><a data-theme="night">night</a></li>
-
-            <li><a data-theme="coffee">coffee</a></li>
-            <li><a data-theme="aqua">aqua</a></li>
-            <li><a data-theme="garden">garden</a></li>
-
-            <li><a data-theme="retro">retro</a></li>
-            <li><a data-theme="valentine">valentine</a></li>
-            <li><a data-theme="wireframe">wireframe</a></li>
-          </ul>
-        </div>
-      </dialog>
     </div>
   </div>
   `;
