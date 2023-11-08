@@ -2,8 +2,10 @@
     to review when authenticated is done
     need user to be authenticated
 */
+import { clearPage } from '../../utils/render';
 
 const ProfilPage = () =>{
+    clearPage();
     const main = document.querySelector('main');
     main.innerHTML = `<div class="page-content page-container" id="page-content">
     <div class="padding">

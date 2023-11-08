@@ -1,5 +1,7 @@
+import { clearPage } from '../../utils/render';
 
 const RulePage = () => {
+  clearPage();
   const main = document.querySelector('main');
   const login = `
   

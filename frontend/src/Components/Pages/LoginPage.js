@@ -1,4 +1,8 @@
+import { clearPage } from '../../utils/render';
+
 const LoginPage = () => {
+    clearPage();
+    
     const main = document.querySelector('main');
     const login = `
     <div class="justify-self-center">
