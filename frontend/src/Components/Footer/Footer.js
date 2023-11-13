@@ -13,28 +13,28 @@ const Footer = () => {
     const footerWrapper = document.querySelector('#footerWrapper');
     const footer = `
         <div class="dropdown dropdown-hover dropdown-right">
-            <label data-theme="luxury" tabindex="0" class="btn m-1">Themes</label>
+            <label id="cursor-Delete" data-theme="luxury" tabindex="0" class="btn m-1">Themes</label>
             <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52" style="display: flex; flex-direction: row; width: 100vw;">
 
-                <li><a data-theme="luxury">luxury</a></li> 
-                <li><a data-theme="forest">forest</a></li>
-                <li><a data-theme="dark">dark</a></li> 
+                <li><a id="cursor-Delete" data-theme="luxury">luxury</a></li> 
+                <li><a id="cursor-Delete" data-theme="forest">forest</a></li>
+                <li><a id="cursor-Delete" data-theme="dark">dark</a></li> 
 
-                <li><a data-theme="synthwave">synthwave</a></li>
-                <li><a data-theme="halloween">halloween</a></li>
-                <li><a data-theme="black">black</a></li>
+                <li><a id="cursor-Delete" data-theme="synthwave">synthwave</a></li>
+                <li><a id="cursor-Delete" data-theme="halloween">halloween</a></li>
+                <li><a id="cursor-Delete" data-theme="black">black</a></li>
 
-                <li><a data-theme="dracula">dracula</a></li>
-                <li><a data-theme="business">business</a></li>
-                <li><a data-theme="night">night</a></li>
+                <li><a id="cursor-Delete" data-theme="dracula">dracula</a></li>
+                <li><a id="cursor-Delete" data-theme="business">business</a></li>
+                <li><a id="cursor-Delete" data-theme="night">night</a></li>
 
-                <li><a data-theme="coffee">coffee</a></li>
-                <li><a data-theme="aqua">aqua</a></li>
-                <li><a data-theme="garden">garden</a></li>
+                <li><a id="cursor-Delete" data-theme="coffee">coffee</a></li>
+                <li><a id="cursor-Delete" data-theme="aqua">aqua</a></li>
+                <li><a id="cursor-Delete" data-theme="garden">garden</a></li>
 
-                <li><a data-theme="retro">retro</a></li>
-                <li><a data-theme="valentine">valentine</a></li>
-                <li><a data-theme="wireframe">wireframe</a></li>
+                <li><a id="cursor-Delete" data-theme="retro">retro</a></li>
+                <li><a id="cursor-Delete" data-theme="valentine">valentine</a></li>
+                <li><a id="cursor-Delete" data-theme="wireframe">wireframe</a></li>
             </ul>
         </div>
     `;

@@ -12,19 +12,20 @@ const Navbar = () => {
   const navbar = `
         <div class="navbar bg-base-100">
     <div class="navbar-start">
-      <button class="btn btn-ghost" href="#" data-uri="/rank">Rank</button>
-      <button class="btn btn-ghost" href="#" data-uri="/rule">Rules</button>
+      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rank">Rank</button>
+      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rule">Rules</button>
     </div>
+
     <div class="navbar-center">
-    
-    <a class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" >BattleShip</a>
+      <a id="cursor-Delete" class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" >BattleShip</a>
     </div>
+
     <div class="navbar-end">
 
-      <button class="btn btn-ghost" href="#" data-uri="/game">Game</button>
-      <button class="btn btn-ghost" href="#" data-uri="/new">New Page</button>
-      <button class="btn btn-ghost" href="#" data-uri="/login">Login</button>
-      <button class="btn btn-ghost" href="#" data-uri="/register">Register</button>
+      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/game">Game</button>
+      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/new">New Page</button>
+      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/login">Login</button>
+      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/register">Register</button>
 
     </div>
   </div>

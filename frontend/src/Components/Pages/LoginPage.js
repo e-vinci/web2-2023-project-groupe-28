@@ -1,4 +1,4 @@
-import { clearPage /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow /* , renderPageTitle */ } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 
 const LoginPage = () => {
@@ -72,6 +72,7 @@ function renderLoginForm() {
     const registerPage = document.createElement('a');
     registerPage.className = 'label-text-alt link link-hover';
     registerPage.innerText = 'have you already an account ?';
+    registerPage.id = 'cursor-Delete';
 
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
@@ -80,6 +81,7 @@ function renderLoginForm() {
     submit.value = 'Login';
     submit.type = 'submit';
     submit.className = 'btn btn-primary';
+    submit.id = 'cursor-Delete';
 
 
     /* ajoute la balise div à main 
@@ -111,6 +113,7 @@ function renderLoginForm() {
         Navigate('/register');
     }
 
+    grow();
 }   
 
 export default LoginPage;

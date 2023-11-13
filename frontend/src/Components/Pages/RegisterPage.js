@@ -1,4 +1,4 @@
-import { clearPage /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow /* , renderPageTitle */ } from '../../utils/render';
 // import Navigate from '../Router/Navigate';
 
 const RegisterPage = () => {
@@ -95,6 +95,7 @@ function renderRegisterForm() {
     submit.className = 'btn btn-primary';
     submit.value = 'Register';
     submit.type = 'submit';
+    submit.id = 'cursor-Delete';
 
     main.appendChild(div1);
     div1.appendChild(div2);
@@ -117,6 +118,8 @@ function renderRegisterForm() {
     div5.appendChild(confirmPassword);
     form.appendChild(div6);
     div6.appendChild(submit);
+
+    grow();
 }
 
 export default RegisterPage;
