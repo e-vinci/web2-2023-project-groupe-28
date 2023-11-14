@@ -13,17 +13,3 @@ function moveCursor(e) {
     outerCursor.style.left = `${x}px`;
     outerCursor.style.top = `${y}px`;
 }
-    document.addEventListener("DOMContentLoaded", () => {
-        const links = Array.from(document.querySelectorAll("input, button, a, label"));
-
-        console.log(links);
-
-        links.forEach((link) => {
-            link.addEventListener("mouseover", () => {
-                innerCursor.classList.add("grow");
-            });
-            link.addEventListener("mouseleave", () => {
-                innerCursor.classList.remove("grow");
-            });
-        });
-    });
