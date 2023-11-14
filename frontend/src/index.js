@@ -1,4 +1,5 @@
 import './stylesheets/output.css';
+import {grow /* , renderPageTitle */ } from './utils/render';
 
 import Navbar from './Components/Navbar/Navbar';
 
@@ -11,3 +12,5 @@ Navbar();
 Footer();
 
 Router();
+
+grow();
