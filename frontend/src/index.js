@@ -1,10 +1,13 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import './stylesheets/main.css';
-import './stylesheets/profilpage.css';
+import './stylesheets/output.css';
 
 import Navbar from './Components/Navbar/Navbar';
+
+import Footer from './Components/Footer/Footer';
+
 import Router from './Components/Router/Router';
 
 Navbar();
+
+Footer();
 
 Router();
