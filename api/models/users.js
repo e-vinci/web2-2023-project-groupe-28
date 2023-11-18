@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+/* const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('node:path');
 const { parse, serialize } = require('../utils/json');
@@ -98,4 +98,83 @@ module.exports = {
   login,
   register,
   readOneUserFromUsername,
+}; */
+
+// eslint-disable-next-line import/no-unresolved
+const PocketBase = require('pocketbase/cjs');
+
+const pb = new PocketBase('https://battleships.hop.sh');
+
+let currentUser;
+
+/* async function register(username, email, password, passwordConfirm) {
+  const user = {
+    username,
+    email,
+    password,
+    passwordConfirm,
+  };
+
+  let record;
+  try {
+    record = await pb.collection('users').create(user);
+  } catch (error) {
+    return error;
+  }
+
+  return record;
+} */
+
+// eslint-disable-next-line consistent-return
+async function login(email, password) {
+  let authData;
+  try {
+    authData = await pb.collection('users').authWithPassword(email, password);
+    currentUser = authData;
+    return authData;
+  } catch (error) {
+    if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
+      // Handle authentication failure
+      return null;
+    }
+
+    // throw error;
+  }
+}
+
+async function getCurrentUser() {
+  return currentUser;
+}
+
+module.exports = {
+  login,
+  getCurrentUser,
 };
+
+// Remplacez la fonction parse
+/* const { getUsernameFromEmail } = require('../utils/dbUtils');
+
+function parseJsonDb(email) {
+  return getUsernameFromEmail(email);
+}
+
+// Mettez à jour la fonction readOneUserFromUsername
+function readOneUserFromUsername(email) {
+  const userFound = parseJsonDb(email);
+  // const userFound = users.find((user) => user.email === email);
+  return userFound;
+}
+
+async function login(email, password) {
+  const userFound = readOneUserFromUsername(email);
+  if (!userFound) return undefined;
+
+  const authData = await db.collection('users').authWithPassword(email, password);
+  if (!authData) return undefined;
+
+  return authData;
+}
+
+module.exports = {
+  login,
+}; */

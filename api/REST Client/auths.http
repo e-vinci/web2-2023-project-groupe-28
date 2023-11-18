@@ -5,7 +5,7 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"unknown",
+    "email":"unknown",
     "password":"admin"
 }
 
@@ -14,25 +14,15 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"admin",
-    "password":"admin"
+    "email":"admin@admin.com",
+    "password":"Admin1234"
 }
 
-
-### Create the manager user
-POST {{baseUrl}}/auths/register
-Content-Type: application/json
-
-{
-    "username":"manager",
-    "password":"manager"
-}
-
-### Login the manager user
+### Login with a user that does not exist
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "username":"manager",
+    "email":"manager",
     "password":"manager"
 }
