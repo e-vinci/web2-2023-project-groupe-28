@@ -7,6 +7,10 @@
 
 }
 
+body{
+  overflow: hidden; 
+}
+
 
 html {
     background-image: url(../img/wireframe_img/waves.png), url(../img/wireframe_img/battleship.png);
