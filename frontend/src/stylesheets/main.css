@@ -7,12 +7,18 @@
 
 }
 
+body {
+  margin: 0;
+  overflow: hidden;
+}
 
-html {
-    background-image: url(../img/wireframe_img/waves.png), url(../img/wireframe_img/battleship.png);
-    background-position: none, center;
-    background-size: auto, auto;
-    background-repeat: no-repeat, no-repeat;
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
 }
 
 #cursor-Delete {
@@ -64,3 +70,16 @@ footer {
   pointer-events: none;
   transition: 0.01s;
 }
+
+.h1 {
+  font-size: 120rem;
+}
+
+.label-text {
+  color: black;
+}
+
+.label-text-alt{
+  color: black;
+}
+

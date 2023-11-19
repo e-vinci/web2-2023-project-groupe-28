@@ -27,6 +27,7 @@ function renderRegisterForm() {
     div4.className = 'form-control';
 
     const title = document.createElement('h1');
+    title.className = 'label-text';
     title.innerText = 'Create an Account';
 
     const label1 = document.createElement('label');

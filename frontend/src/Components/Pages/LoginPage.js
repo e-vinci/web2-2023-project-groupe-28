@@ -32,6 +32,7 @@ function renderLoginForm() {
 
     const title = document.createElement('h1');
     // écrit dans la balise h1 <h1>Login</h1>
+    title.className = 'label-text';
     title.innerText = 'Login';
 
     const label1 = document.createElement('label');
