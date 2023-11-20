@@ -5,6 +5,8 @@ const HomePage = () => {
       <span>Battle</span>
       <span id="ship-neon">Ship</span>
     </div>
+
+    
   `;
 
 
