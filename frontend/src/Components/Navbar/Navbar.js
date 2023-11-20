@@ -17,7 +17,7 @@ const Navbar = () => {
     </div>
 
     <div class="navbar-center">
-      <a id="cursor-Delete" class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" >BattleShip</a>
+      <a id="cursor-Delete" class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" style="color: black;" >BattleShip</a>
     </div>
 
     <div class="navbar-end">

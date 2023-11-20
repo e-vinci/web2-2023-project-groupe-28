@@ -2343,12 +2343,20 @@ html {
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+@font-face{
+  font-family: "Streamster";
+
+  src: url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff2") format("woff2");
+}
+
 *{
+  margin: auto;
+  padding: 0;
   cursor: none;
 }
 
 body {
-  margin: 0;
   overflow: hidden;
 }
 
@@ -2358,7 +2366,9 @@ body {
   bottom: 0;
   min-width: 100%;
   min-height: 100%;
-  z-index: -1;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: -2;
 }
 
 #cursor-Delete {
@@ -2423,9 +2433,59 @@ footer {
   color: black;
 }
 
+#neon{
+  width: 50vw;
+  height: 40vw;
+  max-height: 2000vh;
+  color: #fff;
+  text-align: center;
+  font-family: streamster;
+  font-size: 7vw;
+  text-shadow:
+  0 0 8px #fff,
+  0 0 24px #fff,
+  0 0 32px #f80022,
+  0 0 40px #f80022;
+  position: absolute;
+  inset: 0;
+  transform: rotate(-8deg);
+  z-index: -1;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+}
+
+span:nth-child(1){
+  animation: neon 1.7s infinite alternate;
+}
+
+span:nth-child(2){
+  animation: neon 1.7s infinite alternate-reverse;
+}
+
+@keyframes neon{
+  0%, 18%, 22%, 26%, 58%, 62%, 100%{
+    text-shadow:
+      0 0 8px #fff,
+      0 0 24px #fff,
+      0 0 32px #f80022,
+      0 0 40px #f80022;
+  }
+
+  20%, 24%, 60%{
+    text-shadow: none;
+  }
+}
+
+#neon::before{
+  content: "{";
+  position: absolute;
+  inset: 1vw 0 0 6vw;
+  transform: rotate(3deg);
+}
+
 @media (min-width: 1024px) {
   .lg\:flex-row-reverse {
     flex-direction: row-reverse;
   }
 }
-

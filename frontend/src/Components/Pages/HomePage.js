@@ -1,6 +1,13 @@
 const HomePage = () => {
   const main = document.querySelector('main');
-  main.innerHTML = 'Deal with the content of your HomePage';
+  main.innerHTML = `
+    <div id="neon">
+      <span>Battle</span>
+      <span id="ship-neon">Ship</span>
+    </div>
+  `;
+
+
 };
 
 export default HomePage;
