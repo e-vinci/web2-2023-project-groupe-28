@@ -23,14 +23,13 @@ async function getUsers() {
 async function getUsernameFromEmail(email) {
   const userObject = await pb.collection('users').getFullList({
     // eslint-disable-next-line object-shorthand
-    filters: { email: email }, // Ajoutez la condition pour filtrer par email
+    filters: { email: email }, // filtrer par email
   });
 
-  // Assurez-vous qu'un utilisateur a été trouvé avant de récupérer le nom d'utilisateur
   if (userObject.length > 0) {
     return userObject[0].username;
   }
-  return null; // Aucun utilisateur trouvé avec cet email
+  return undefined; // Aucun utilisateur trouvé avec cet email
 }
 
 module.exports = {

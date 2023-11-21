@@ -105,7 +105,7 @@ const PocketBase = require('pocketbase/cjs');
 
 const pb = new PocketBase('https://battleships.hop.sh');
 
-let currentUser;
+// let currentUser;
 
 /* async function register(username, email, password, passwordConfirm) {
   const user = {
@@ -126,7 +126,7 @@ let currentUser;
 } */
 
 // eslint-disable-next-line consistent-return
-async function login(email, password) {
+/* async function login(email, password) {
   let authData;
   try {
     authData = await pb.collection('users').authWithPassword(email, password);
@@ -135,7 +135,7 @@ async function login(email, password) {
   } catch (error) {
     if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
       // Handle authentication failure
-      return null;
+      return undefined;
     }
 
     // throw error;
@@ -149,32 +149,28 @@ async function getCurrentUser() {
 module.exports = {
   login,
   getCurrentUser,
-};
+}; */
 
 // Remplacez la fonction parse
-/* const { getUsernameFromEmail } = require('../utils/dbUtils');
+const { getUsernameFromEmail } = require('../utils/dbUtils');
 
-function parseJsonDb(email) {
-  return getUsernameFromEmail(email);
-}
-
-// Mettez à jour la fonction readOneUserFromUsername
-function readOneUserFromUsername(email) {
-  const userFound = parseJsonDb(email);
-  // const userFound = users.find((user) => user.email === email);
-  return userFound;
-}
-
+// eslint-disable-next-line consistent-return
 async function login(email, password) {
-  const userFound = readOneUserFromUsername(email);
-  if (!userFound) return undefined;
+  try {
+    const userFound = getUsernameFromEmail(email);
+    if (!userFound) return undefined;
+    const authData = await pb.collection('users').authWithPassword(email, password);
+    return authData;
+  } catch (error) {
+    if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
+      // Handle authentication failure
+      return undefined;
+    }
 
-  const authData = await db.collection('users').authWithPassword(email, password);
-  if (!authData) return undefined;
-
-  return authData;
+    // throw error;
+  }
 }
 
 module.exports = {
   login,
-}; */
+};
