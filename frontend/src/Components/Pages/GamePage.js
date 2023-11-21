@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 import GameScene from '../Game/GameScene';
-import { clearPage } from '../../utils/render';
+import { clearPage, grow } from '../../utils/render';
 
 let game;
 
@@ -33,6 +33,8 @@ const GamePage = () => {
   // therefore destroy any started game prior to recreate it
   if (game) game.destroy(true);
   game = new Phaser.Game(config);
+
+  grow();
 };
 
 export default GamePage;

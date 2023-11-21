@@ -1,4 +1,4 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, grow } from '../../utils/render';
 
 const RankPage = () => {
     clearPage();
@@ -8,7 +8,7 @@ const RankPage = () => {
     `
     main.innerHTML = login;
 
-
+    grow();
   };
   
   export default RankPage;
