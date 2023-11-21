@@ -157,9 +157,10 @@ const { getUsernameFromEmail } = require('../utils/dbUtils');
 // eslint-disable-next-line consistent-return
 async function login(email, password) {
   try {
-    const userFound = getUsernameFromEmail(email);
+    const userFound = await getUsernameFromEmail(email);
+    console.log(`userfound : ${userFound}`);
     if (!userFound) return undefined;
-    const authData = await pb.collection('users').authWithPassword(email, password);
+    const authData = await pb.collection('users').authWithPassword(userFound, password);
     return authData;
   } catch (error) {
     if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
