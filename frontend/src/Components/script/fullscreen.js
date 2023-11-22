@@ -1,6 +1,8 @@
 /* eslint-disable prefer-arrow-callback */
 
 
+
+
 document.documentElement.addEventListener('click', function() {
     if (!document.fullscreenElement) {
       if (document.documentElement.requestFullscreen) {

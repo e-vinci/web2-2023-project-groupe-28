@@ -22,10 +22,10 @@ const Navbar = () => {
 
     <div class="navbar-end">
 
-      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/game">Game</button>
-      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/new">New Page</button>
-      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/login">Login</button>
-      <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/register">Register</button>
+      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/game">Game</button>
+      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/new">New Page</button>
+      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/login">Login</button>
+      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/register">Register</button>
 
     </div>
   </div>
