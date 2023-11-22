@@ -1,11 +1,13 @@
 import Phaser from 'phaser';
 import GameScene from '../Game/GameScene';
+import { clearPage } from '../../utils/render';
 
 let game;
 
 const GamePage = () => {
+  clearPage();
   const phaserGame = `
-<div id="gameDiv" class="d-flex justify-content-center my-3">
+<div id="gameDiv" class="justify-self-center"">
 </div>`;
 
   const main = document.querySelector('main');

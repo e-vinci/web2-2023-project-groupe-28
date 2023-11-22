@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:3000
+
+### add points and add one victory
+POST {{baseUrl}}/leaderboard/victory
+Content-Type: application/json
+
+{
+    "user":"c538bvaascnvh7x"
+}
+
+### remove points and add one defeat
+POST {{baseUrl}}/leaderboard/defeat
+Content-Type: application/json
+
+{
+    "user":"c538bvaascnvh7x"
+}

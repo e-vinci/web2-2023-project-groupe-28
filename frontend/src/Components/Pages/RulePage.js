@@ -1,9 +1,11 @@
-
+import { clearPage } from '../../utils/render';
 const Rulepage = () => {
+    clearPage();
     const main = document.querySelector('main');
     main.innerHTML = `
     <div class="card w-72 mx-auto my-8 bg-base-100 text-primary-content p-4">
         <div class="card-body">
+            <img src="../../img/wireframe_img/logo.png"/>
             <h1 class="card-title text-2xl">Rules</h1>
             <h3 class="text-xl">Game Setup :</h3>
             <p class="mb-4">Each player places their fleet of ships on their own grid. The standard fleet consists of ships

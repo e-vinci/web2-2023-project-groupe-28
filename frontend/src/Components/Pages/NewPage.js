@@ -11,6 +11,7 @@ function renderGoBackHomeButton() {
   const submit = document.createElement('input');
   submit.value = 'Go back to HomePage';
   submit.className = 'btn btn-secondary mt-3';
+  submit.id = 'cursor-Delete';
   submit.addEventListener('click', () => {
     Navigate('/');
   });
