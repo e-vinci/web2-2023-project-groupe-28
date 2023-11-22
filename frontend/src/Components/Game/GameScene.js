@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import Phaser from 'phaser';
 import ScoreLabel from './ScoreLabel';
 import BombSpawner from './BombSpawner';

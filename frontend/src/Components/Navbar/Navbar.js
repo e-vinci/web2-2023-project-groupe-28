@@ -10,6 +10,7 @@
 const Navbar = () => {
   const navbarWrapper = document.querySelector('#navbarWrapper');
   const navbar = `
+
         <div class="navbar bg-base-100">
     <div class="navbar-start">
       <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rank">Rank</button>
