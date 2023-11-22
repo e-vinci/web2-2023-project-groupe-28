@@ -7,6 +7,8 @@
     src: url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff") format("woff"),
     url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff2") format("woff2");
 }
+@include flexCenter;
+@include pseudo;
 
 *{
   margin: auto;
@@ -17,6 +19,24 @@
 
 body {
   overflow: hidden;
+  animation: blue-me 5ms infinite;
+}
+body:after {   
+  box-shadow: inset 0 0 10em rgba(0,0,0,0.75);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  content: "";
+ }
+ @keyframes blue-me {
+	28%{ background: #171DA8; }
+  	30% { background:rgba(#171DA8,0.95);}
+	33%{ background: #171DA8; }
+	34% { background:rgba(#171DA8,0.9);}
+	35%{ background: #171DA8; }
 }
 
 #bg-video {
@@ -43,6 +63,7 @@ footer {
   width: 100%;
 }
 
+/* cursor animation and style */
 .inner-cursor {
   position: fixed;
   left: 10px;
@@ -87,6 +108,7 @@ footer {
   color: black;
 }
 
+/*button style*/
 #neon{
   width: 50vw;
   height: 40vw;
@@ -136,7 +158,7 @@ span:nth-child(2){
 
 #redirectGameButton{
   position: fixed; 
-  left: 40%; 
+  left: 44%; 
   bottom: 20%;
   border: 3px solid rgb(0, 221, 255); 
   color: white;
@@ -161,3 +183,15 @@ span:nth-child(2){
   box-shadow: 0 0 1px rgb(0, 221, 255), 0 0 3px rgb(0, 221, 255), 0 0 6px rgb(0, 221, 255), 0 0 9px rgb(0, 221, 255);
   cursor: none;
 }
+
+.swap {
+  float: right;
+}
+
+.center{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/*CTR effect for the screen*/

@@ -12,10 +12,15 @@ const HomePage = () => {
       <span id="ship-neon">Ship</span>
     </div>
 
-      <button id="redirectGameButton" class="btn btn-outline animate-bounce animate-duration-1000 animate-ease-in animate-normal animate-fill-forwards">Appuyez sur "Espace" pour lancer le jeu</button>
-    
+   
+      <button id="redirectGameButton" class="btn btn-outline animate-bounce animate-duration-1000 animate-ease-in animate-normal animate-fill-forwards">Press "Space" to play</button>
+   
+
+      
     
   `;
+
+  // redirect to game page
   const gameRedirectory = document.querySelector('#redirectGameButton');
 
   gameRedirectory.addEventListener('click', () => {
@@ -27,6 +32,9 @@ const HomePage = () => {
       Navigate('/game');
     }
   });
+
+ 
+
 
   grow();
 
