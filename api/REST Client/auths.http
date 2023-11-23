@@ -26,3 +26,23 @@ Content-Type: application/json
     "email":"manager",
     "password":"manager"
 }
+
+### Try to register
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"testRegister",
+    "email":"test@register.com",
+    "password":"12345678",
+    "passwordConfirm":"12345678"
+}
+
+### try Login with a user that just registered
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "email":"test@register.com",
+    "password":"12345678"
+}

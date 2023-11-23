@@ -1,3 +1,4 @@
+/* eslint-disable import/no-unresolved */
 /* const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('node:path');
@@ -100,31 +101,6 @@ module.exports = {
   readOneUserFromUsername,
 }; */
 
-// eslint-disable-next-line import/no-unresolved
-const PocketBase = require('pocketbase/cjs');
-
-const pb = new PocketBase('https://battleships.hop.sh');
-
-// let currentUser;
-
-/* async function register(username, email, password, passwordConfirm) {
-  const user = {
-    username,
-    email,
-    password,
-    passwordConfirm,
-  };
-
-  let record;
-  try {
-    record = await pb.collection('users').create(user);
-  } catch (error) {
-    return error;
-  }
-
-  return record;
-} */
-
 // eslint-disable-next-line consistent-return
 /* async function login(email, password) {
   let authData;
@@ -150,9 +126,31 @@ module.exports = {
   login,
   getCurrentUser,
 }; */
-
-// Remplacez la fonction parse
+const PocketBase = require('pocketbase/cjs');
 const { getUsernameFromEmail } = require('../utils/dbUtils');
+
+const pb = new PocketBase('https://battleships.hop.sh');
+
+// let currentUser;
+
+async function register(username, email, password, passwordConfirm) {
+  const user = {
+    username,
+    email,
+    password,
+    passwordConfirm,
+  };
+  try {
+    const userFound = await getUsernameFromEmail(email);
+    console.log(`userfound : ${userFound}`);
+    if (userFound) return undefined;
+    const record = await pb.collection('users').create(user);
+    console.log(`record : ${record}`);
+    return record;
+  } catch (error) {
+    return error;
+  }
+}
 
 // eslint-disable-next-line consistent-return
 async function login(email, password) {
@@ -173,5 +171,6 @@ async function login(email, password) {
 }
 
 module.exports = {
+  register,
   login,
 };
