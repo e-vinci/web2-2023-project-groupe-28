@@ -17,14 +17,13 @@ const Navbar = () => {
     </div>
 
     <div class="navbar-center">
-      <a id="cursor-Delete" class="btn btn-ghost normal-case text-xl" href="#" data-uri="/" style="color: black;" >BattleShip</a>
     </div>
 
     <div class="navbar-end">
     
-      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/new">New Page</button>
-      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/login">Login</button>
-      <button id="neonButton" class="btn btn-ghost" href="#" data-uri="/register">Register</button>
+      <button id="neonButton" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/new" style="margin-right: 3mm;">New Page</button>
+      <button id="neonButton" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/login" style="margin-right: 3mm;">Login</button>
+      <button id="neonButton" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/register">Register</button>
 
     </div>
   </div>
