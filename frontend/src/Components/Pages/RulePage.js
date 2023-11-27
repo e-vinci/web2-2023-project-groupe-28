@@ -1,4 +1,5 @@
 import { clearPage } from '../../utils/render';
+
 const Rulepage = () => {
     clearPage();
     const main = document.querySelector('main');
