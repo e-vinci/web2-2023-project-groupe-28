@@ -1,0 +1,13 @@
+#page-container{
+    display: contents;
+    justify-content: center;
+    height: 100vh;
+}
+
+#padding {
+    padding: 3rem !important
+}
+
+#card-body {
+    margin-left: 100px;
+}
