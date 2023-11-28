@@ -1,3 +1,4 @@
+import { setAuthenticatedUser } from '../../utils/auths';
 import { clearPage, grow, returnHomePage /* , renderPageTitle */ } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 
@@ -115,7 +116,7 @@ function renderLoginForm() {
     label3.appendChild(registerPage);
     form.appendChild(div6);
     div6.appendChild(submit);
-    
+    form.addEventListener('submit', onLogin);    
     registerPage.onclick = () => {
         Navigate('/register');
     }
@@ -123,6 +124,33 @@ function renderLoginForm() {
     returnHomePage();
 
     grow();
-}   
+} 
+
+async function onLogin(event) {
+    event.preventDefault();
+    const email = document.querySelector('#email').value;
+    const password = document.querySelector('#password').value;
+    const response = await fetch('/api/auths/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ 
+            email, 
+            password, 
+        }),
+    });
+    if (!response.ok) {
+        throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+    }
+    const authenticatedUser = await response.json();
+
+    console.log('Authenticated user : ', authenticatedUser);
+
+    setAuthenticatedUser(authenticatedUser);
+    
+    Navigate('/');
+    
+}
 
 export default LoginPage;
