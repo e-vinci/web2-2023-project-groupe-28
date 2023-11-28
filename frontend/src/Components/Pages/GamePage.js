@@ -1,40 +1,43 @@
-import Phaser from 'phaser';
-import GameScene from '../Game/GameScene';
-import { clearPage, grow } from '../../utils/render';
+/* eslint-disable no-plusplus */
+/* eslint-disable no-import-assign */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import { clearPage } from '../../utils/render';
+import InitGame from '../Game/Game';
+import ChooseLvl from '../Game/ChooseLvl';
 
-let game;
 
 const GamePage = () => {
-  clearPage();
-  const phaserGame = `
-<div id="gameDiv" class="justify-self-center"">
-</div>`;
+    clearPage();
+    const choose = new ChooseLvl();
+    choose.chooseLvl();
 
-  const main = document.querySelector('main');
-  main.innerHTML = phaserGame;
+    let lvl;
+    const boutons = document.querySelectorAll("button");
+    
+    boutons.forEach((bouton) => {
+        bouton.addEventListener('click', () => {
+            lvl = bouton.value;
+            console.log(lvl);
+            if(lvl !== undefined){
+                const game = new InitGame(lvl);
+                game.renderMenuFromString();
+                const divs = document.querySelectorAll("td.color-div");
+                const divsBis = document.querySelectorAll("td.color-div2"); 
 
-  const config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: { y: 300 },
-        debug: false,
-      },
-    },
-    scene: [GameScene],
-    //  parent DOM element into which the canvas created by the renderer will be injected.
-    parent: 'gameDiv',
-  };
+                divs.forEach((div) => {
+                    div.addEventListener("click", () => {
+                        if(game.tourJoueur(div) && game.compteurNavireBotTouche < 20){
+                            game.tourBot(divsBis);
+                        }               
+                    });
+                });
+            }
+        });
+    });    
 
-  // there could be issues when a game was quit (events no longer working)
-  // therefore destroy any started game prior to recreate it
-  if (game) game.destroy(true);
-  game = new Phaser.Game(config);
-
-  grow();
+      
 };
+
 
 export default GamePage;
