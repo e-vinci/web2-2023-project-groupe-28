@@ -187,4 +187,52 @@ span:nth-child(2){
 
 
 
-/*CTR effect for the screen*/
+/*CSS for the game*/
+
+.color-recap {
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+}
+
+.color-div {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: solid;
+}
+.color-div2 {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  border: solid;
+}
+
+.cross{  
+  width: 50px;
+  height: 50px;    
+  border-radius: 50% 50%;    
+  position: relative;
+  &::before{
+      background: #888;
+      position: absolute;
+      display:block;
+      content:'';
+      width: 125%;
+      height: 6%;
+      top: 41%;
+      left: -19%;
+      transform: rotate(45deg);
+  } 
+  &::after{
+      background: #888;
+      position: absolute;
+      display:block;
+      content:'';
+      width: 6%;
+      height: 125%;
+      left: 39%;
+      top: -18%;
+      transform: rotate(45deg);
+  }    
+}
