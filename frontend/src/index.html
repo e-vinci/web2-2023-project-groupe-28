@@ -2,19 +2,26 @@
 <html id="htmlTag" lang="en" data-theme="forest">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <link rel="stylesheet" href="./stylesheets/output.css">
     <title>BattleShip</title>
     <link rel="icon" href="./img/logoFavicon.png" sizes="5000x5000" type="image/svg+xml" />
   </head>
 
   <body>
+
     <header><div id="navbarWrapper"></div></header>
     <main class="grid"></main>
     <footer><div id="footerWrapper"></div></footer>
-
     <div class="inner-cursor"></div>
     <div class="outer-cursor"></div>
+
+    <video autoplay loop muted id="bg-video">
+      <source src="./assets/style/loop.webm" type="video/WebM">
+        Votre navigateur ne supporte pas la vidéo.
+    </video>
+
+    <audio autoplay loop id="bg-audio" src="./songs/LadyOfThe80s.mp3" type="audio/mpeg"></audio>
 
     <script src="./Components/cursor/cursor.js"></script>
   </body>

@@ -1,4 +1,4 @@
-import { clearPage, grow /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow, returnHomePage /* , renderPageTitle */ } from '../../utils/render';
 // import Navigate from '../Router/Navigate';
 
 const RegisterPage = () => {
@@ -9,6 +9,11 @@ const RegisterPage = () => {
 
 function renderRegisterForm() {
     const main = document.querySelector('main');
+
+    const returnBtn = document.createElement('button');
+    returnBtn.className = 'btn btn-outline';
+    returnBtn.id = 'returnbtn';
+    returnBtn.innerText = '<--';
 
     const div1 = document.createElement('div');
     div1.className = 'justify-self-center';
@@ -27,6 +32,7 @@ function renderRegisterForm() {
     div4.className = 'form-control';
 
     const title = document.createElement('h1');
+    title.className = 'label-text';
     title.innerText = 'Create an Account';
 
     const label1 = document.createElement('label');
@@ -98,6 +104,7 @@ function renderRegisterForm() {
     submit.id = 'cursor-Delete';
 
     main.appendChild(div1);
+    main.appendChild(returnBtn);
     div1.appendChild(div2);
     div2.appendChild(div3);
     div3.appendChild(form);
@@ -118,6 +125,8 @@ function renderRegisterForm() {
     div5.appendChild(confirmPassword);
     form.appendChild(div6);
     div6.appendChild(submit);
+
+    returnHomePage();
 
     grow();
 }

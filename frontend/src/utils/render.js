@@ -1,3 +1,5 @@
+import Navigate from '../Components/Router/Navigate';
+
 const innerCursor = document.querySelector(".inner-cursor");
 
 const clearPage = () => {
@@ -12,6 +14,12 @@ const renderPageTitle = (title) => {
   pageTitle.innerText = title;
   main.appendChild(pageTitle);
 };
+
+document.addEventListener('keydown', (event) => {
+  if (event.code === 'Backspace') {
+  Navigate('/');
+  }
+});
 
 // aggrandit le curseur quand il passe sur un lien, un bouton ou un champ de saisie
 function grow() {
@@ -29,4 +37,13 @@ function grow() {
   });
 }
 
-export { clearPage, renderPageTitle, grow };
+function returnHomePage() {
+  // redirect to game page
+  const gameRedirectory = document.querySelector('#returnbtn');
+
+  gameRedirectory.addEventListener('click', () => {
+      Navigate('/');
+  });
+}
+
+export { clearPage, renderPageTitle, grow, returnHomePage };

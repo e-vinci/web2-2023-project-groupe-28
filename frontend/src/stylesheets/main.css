@@ -1,22 +1,34 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url(//db.onlinewebfonts.com/c/c86f6e311c62f1ee74affa41d9c3686f?family=Streamster);
+@font-face{
+    font-family: "Streamster";
+    src: url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff") format("woff"),
+    url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff2") format("woff2");
+}
+@include flexCenter;
+@include pseudo;
 
 *{
+  margin: auto;
+	padding: 0;
   cursor: none;
 
 }
 
-
-html {
-    background-image: url(../img/wireframe_img/waves.png), url(../img/wireframe_img/battleship.png);
-    background-position: none, center;
-    background-size: auto, auto;
-    background-repeat: no-repeat, no-repeat;
+body {
+  overflow: hidden;
 }
 
-#cursor-Delete {
-  cursor: none;
+#bg-video {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+  z-index: -2;
 }
 
 li{
@@ -33,6 +45,7 @@ footer {
   width: 100%;
 }
 
+/* cursor animation and style */
 .inner-cursor {
   position: fixed;
   left: 10px;
@@ -62,5 +75,116 @@ footer {
   mix-blend-mode: difference;
   border-radius: 50%;
   pointer-events: none;
-  transition: 0.01s;
+  transition: 0.001s;
 }
+
+.h1 {
+  font-size: 120rem;
+}
+
+.label-text {
+  color: black;
+}
+
+.label-text-alt{
+  color: black;
+}
+
+/*button style*/
+#neon{
+  width: 50vw;
+  height: 40vw;
+  max-height: 2000vh;
+  color: #fff;
+  text-align: center;
+  font-family: streamster;
+  font-size: 7vw;
+  text-shadow:
+  0 0 8px #fff,
+  0 0 24px #fff,
+  0 0 32px #f80022,
+  0 0 40px #f80022;
+  position: absolute;
+  inset: 0;
+  transform: rotate(-8deg);
+  z-index: -1;
+  user-select: none;
+}
+span:nth-child(1){
+  animation: neon 1.7s infinite alternate;
+}
+span:nth-child(2){
+  animation: neon 1.7s infinite alternate-reverse;
+}
+@keyframes neon{
+  0%, 18%, 22%, 26%, 58%, 62%, 100%{
+      text-shadow:
+      0 0 8px #fff,
+      0 0 24px #fff,
+      0 0 32px #f80022,
+      0 0 40px #f80022;
+  }
+  20%, 24%, 60%{        
+      text-shadow: none;
+  }    
+}
+#neon::before{
+  content: "{";
+  position: absolute;
+  inset: 1vw 0 0 6vw;
+  transform: rotate(3deg);
+}
+
+/*return button style*/
+#returnbtn {
+  position: fixed;
+  top: 60px; /* Adjust this value based on the height of your navbar */
+  left: 0;
+}
+/* homePage button to redirect to game page */
+
+#redirectGameButton{
+  position: fixed; 
+  left: 44%; 
+  bottom: 20%;
+
+}
+
+#redirectGameButton:hover, #returnbtn:hover {
+  color: white; /* rose fluo */
+  background-color: rgba(0, 221, 255, 0.855);
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+}
+
+#redirectGameButton, #returnbtn{
+  border: 3px solid rgb(0, 221, 255); 
+  background-color: #292423;
+  color: white;
+  text-align: center; 
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+  box-shadow: 0 0 10px rgb(0, 221, 255), 0 0 20px rgb(0, 221, 255), 0 0 30px rgb(0, 221, 255), 0 0 40px rgb(0, 221, 255);
+  cursor: none;
+}
+
+#neonButton{
+  border: 3px solid rgb(0, 221, 255);
+  color: white;
+  text-align: center; 
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+  box-shadow: 0 0 1px rgb(0, 221, 255), 0 0 3px rgb(0, 221, 255), 0 0 6px rgb(0, 221, 255), 0 0 9px rgb(0, 221, 255);
+  cursor: none;
+}
+
+.swap {
+  float: right;
+}
+
+.center{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+
+
+/*CTR effect for the screen*/

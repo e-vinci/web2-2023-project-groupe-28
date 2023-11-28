@@ -2,7 +2,7 @@
     to review when authenticated is done
     need user to be authenticated
 */
-import { clearPage } from '../../utils/render';
+import { clearPage, grow } from '../../utils/render';
 
 const ProfilPage = () =>{
     clearPage();
@@ -45,6 +45,8 @@ const ProfilPage = () =>{
             </div>
         </div>
     </div>`;
+
+    grow();
 };  
 
 export default ProfilPage;

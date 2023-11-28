@@ -1,4 +1,5 @@
 import { clearPage } from '../../utils/render';
+// importe une image
 
 const Rulepage = () => {
     clearPage();
