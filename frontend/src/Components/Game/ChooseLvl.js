@@ -1,16 +1,21 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable no-unused-vars */
-import { clearPage } from '../../utils/render';
+import { clearPage, grow, returnHomePage } from '../../utils/render';
 
 class ChooseGame{
     constructor(){
         clearPage();
         const lvl = 0;
+        
+    grow();
     }
 
     chooseLvl(){
         const main = document.querySelector('main');  
-        main.innerHTML += `<div class="justify-self-center">
+        main.innerHTML += `
+        <button id="returnbtn" class="btn btn-outline"><--</button>
+
+        <div class="justify-self-center">
             <div class="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-0">
                 <span>
                     <h1>Choose Level</h1>                    
@@ -22,6 +27,7 @@ class ChooseGame{
         </div>
         `
     }
+
 }
 
 export default ChooseGame;

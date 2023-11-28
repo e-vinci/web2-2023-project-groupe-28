@@ -15,12 +15,6 @@ const renderPageTitle = (title) => {
   main.appendChild(pageTitle);
 };
 
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Backspace') {
-  Navigate('/');
-  }
-});
-
 // aggrandit le curseur quand il passe sur un lien, un bouton ou un champ de saisie
 function grow() {
   const links = Array.from(document.querySelectorAll("input, button, a"));

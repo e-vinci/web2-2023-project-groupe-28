@@ -2,18 +2,19 @@
 /* eslint-disable no-import-assign */
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import { clearPage } from '../../utils/render';
+import { clearPage, grow, returnHomePage } from '../../utils/render';
 import InitGame from '../Game/Game';
 import ChooseLvl from '../Game/ChooseLvl';
 
 
 const GamePage = () => {
     clearPage();
+
     const choose = new ChooseLvl();
     choose.chooseLvl();
 
     let lvl;
-    const boutons = document.querySelectorAll("button");
+    const boutons = document.querySelectorAll("#cursor-Delete");
     
     boutons.forEach((bouton) => {
         bouton.addEventListener('click', () => {
@@ -36,7 +37,9 @@ const GamePage = () => {
         });
     });    
 
-      
+    grow();
+    
+    returnHomePage();
 };
 
 
