@@ -299,7 +299,7 @@ class InitGame{
                             <div> <table id="b">${recapNavire}</table> </div>  
                             <div> <table id="j">${recapNavire}</table> </div> 
                         </div>  `
-
+        document.querySelector('main').className = '';
         return jeuBis;
     }
 

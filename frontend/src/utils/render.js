@@ -5,6 +5,7 @@ const innerCursor = document.querySelector(".inner-cursor");
 const clearPage = () => {
   const main = document.querySelector('main');
   main.innerHTML = '';
+  main.className = 'grid';
 };
 
 const renderPageTitle = (title) => {
