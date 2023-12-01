@@ -40,4 +40,11 @@ function returnHomePage() {
   });
 }
 
-export { clearPage, renderPageTitle, grow, returnHomePage };
+function playVideoIfPaused() {
+  const bgVideo = document.querySelector('#bg-video'); // Replace '#bgVideoId' with the actual id or selector of your background video
+  if (bgVideo && bgVideo.paused) {
+    bgVideo.play();
+  }
+}
+
+export { clearPage, renderPageTitle, grow, returnHomePage, playVideoIfPaused };

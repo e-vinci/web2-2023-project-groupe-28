@@ -2410,9 +2410,9 @@ html {
   line-height: 2rem;
 }
 
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
 }
 
 .text-primary-content {
@@ -2436,13 +2436,6 @@ html {
           backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 
-@font-face{
-  font-family: "Streamster";
-
-  src: url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff") format("woff"),
-    url("//db.onlinewebfonts.com/t/c86f6e311c62f1ee74affa41d9c3686f.woff2") format("woff2");
-}
-
 @include flexCenter;
 
 @include pseudo;
@@ -2454,7 +2447,9 @@ html {
 }
 
 body {
+  overflow-y: auto;
   overflow: hidden;
+  font-family: "VT323", monospace;
 }
 
 #bg-video {
@@ -2466,6 +2461,47 @@ body {
   -o-object-fit: cover;
      object-fit: cover;
   z-index: -2;
+}
+
+/*add blure to card*/
+
+#rules {
+  background-color: rgb(0, 221, 255, 0.2);
+  /* Make the background transparent */
+  -webkit-backdrop-filter: blur(100px);
+          backdrop-filter: blur(100px);
+  /* Add a blur effect */
+  width: 80%;
+  /* Adjust as needed */
+  max-height: 100%;
+  box-sizing: border-box;
+  padding: 20px;
+  border: 2px solid rgb(255, 20, 147);
+  box-shadow: 0 0 1px rgb(255, 20, 147), 0 0 3px rgb(255, 20, 147), 0 0 6px rgb(255, 20, 147), 0 0 9px rgb(255, 20, 147);
+  margin-top: 0px;
+  -webkit-text-stroke: 0.5px white;
+}
+
+#rules p {
+  font-weight: bold;
+  /* Make the text bold */
+}
+
+.text-xl, .text-2xl {
+  font-size: 0.9rem;
+  /* Adjust as needed */
+}
+
+.mb-4 {
+  margin-bottom: 0.5rem;
+  /* Adjust as needed */
+}
+
+.bg-base-0 {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.1);
+  /* Adjust color and opacity as needed */
 }
 
 li{
@@ -2528,7 +2564,7 @@ footer {
   color: black;
 }
 
-/*button style*/
+/*Title*/
 
 #neon{
   width: 50vw;
@@ -2536,7 +2572,7 @@ footer {
   max-height: 2000vh;
   color: #fff;
   text-align: center;
-  font-family: streamster;
+  font-family: 'Yellowtail', serif;
   font-size: 7vw;
   text-shadow:
   0 0 8px #fff,
@@ -2574,35 +2610,21 @@ span:nth-child(2){
   }
 }
 
-#neon::before{
-  content: "{";
-  position: absolute;
-  inset: 1vw 0 0 6vw;
-  transform: rotate(3deg);
-}
-
 /*return button style*/
 
 #returnbtn {
   position: fixed;
-  top: 60px;
+  top: 80px;
   /* Adjust this value based on the height of your navbar */
   left: 0;
 }
 
-/* homePage button to redirect to game page */
+/* homePage button to redirect to game page + all button*/
 
 #redirectGameButton{
   position: fixed;
   left: 44%;
   bottom: 20%;
-}
-
-#redirectGameButton:hover, #returnbtn:hover {
-  color: white;
-  /* rose fluo */
-  background-color: rgba(0, 221, 255, 0.855);
-  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
 }
 
 #redirectGameButton, #returnbtn{
@@ -2622,6 +2644,26 @@ span:nth-child(2){
   text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
   box-shadow: 0 0 1px rgb(0, 221, 255), 0 0 3px rgb(0, 221, 255), 0 0 6px rgb(0, 221, 255), 0 0 9px rgb(0, 221, 255);
   cursor: none;
+}
+
+#neonButton-alternative{
+  border: 3px solid rgb(255, 20, 147);
+  color: white;
+  text-align: center;
+  box-shadow: 0 0 1px rgb(255, 20, 147), 0 0 3px rgb(255, 20, 147), 0 0 6px rgb(255, 20, 147), 0 0 9px rgb(255, 20, 147);
+  cursor: none;
+}
+
+#neonButton-alternative:hover{
+  color: white;
+  background-color: rgb(255, 20, 147);
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
+}
+
+#redirectGameButton:hover, #returnbtn:hover, #neonButton:hover{
+  color: white;
+  background-color: rgba(0, 221, 255, 0.855);
+  text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white;
 }
 
 .swap {

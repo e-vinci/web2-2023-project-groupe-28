@@ -14,7 +14,7 @@
 const Footer = () => {
     const footerWrapper = document.querySelector('#footerWrapper');
     const footer = `
-    <button id="neonButton" class="btn btn-outline">fullscreen</button>
+    <button id="neonButton" class="btn btn-outline" data-theme="luxury">fullscreen</button>
     
     `;
   

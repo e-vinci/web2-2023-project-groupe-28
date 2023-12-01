@@ -10,6 +10,12 @@ import ChooseLvl from '../Game/ChooseLvl';
 const GamePage = () => {
     clearPage();
 
+    // Pause the background video
+    const bgVideo = document.querySelector('#bg-video'); // Replace '#bgVideoId' with the actual id or selector of your background video
+    if (bgVideo) {
+        bgVideo.pause();
+    }
+
     const choose = new ChooseLvl();
     choose.chooseLvl();
 
