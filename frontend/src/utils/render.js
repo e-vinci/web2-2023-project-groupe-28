@@ -5,6 +5,7 @@ const innerCursor = document.querySelector(".inner-cursor");
 const clearPage = () => {
   const main = document.querySelector('main');
   main.innerHTML = '';
+  main.className = 'grid';
 };
 
 const renderPageTitle = (title) => {
@@ -14,12 +15,6 @@ const renderPageTitle = (title) => {
   pageTitle.innerText = title;
   main.appendChild(pageTitle);
 };
-
-document.addEventListener('keydown', (event) => {
-  if (event.code === 'Backspace') {
-  Navigate('/');
-  }
-});
 
 // aggrandit le curseur quand il passe sur un lien, un bouton ou un champ de saisie
 function grow() {
@@ -46,4 +41,11 @@ function returnHomePage() {
   });
 }
 
-export { clearPage, renderPageTitle, grow, returnHomePage };
+function playVideoIfPaused() {
+  const bgVideo = document.querySelector('#bg-video'); // Replace '#bgVideoId' with the actual id or selector of your background video
+  if (bgVideo && bgVideo.paused) {
+    bgVideo.play();
+  }
+}
+
+export { clearPage, renderPageTitle, grow, returnHomePage, playVideoIfPaused };

@@ -246,7 +246,7 @@ class InitGame{
                 grilleNavireJ += `<tr> ${ligneNavireJ}</tr>`;
                 ligneNavireJ = ``;          
             }
-            if(!grillesBis[Math.floor(i/this.dimension)][i%this.dimension][1]) ligneNavireJ += `<td id =${i} class="color-div2" style="background-color: #ffffff"></td>`;
+            if(!grillesBis[Math.floor(i/this.dimension)][i%this.dimension][1]) ligneNavireJ += `<td id =${i} class="color-div2" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 2px solid #FF69B4; box-shadow: 0 0 10px #FF69B4;"></td>`;
             else ligneNavireJ += `<td id =${i} class="color-div2" style="background-color: #0000FF"></td>`;
             if(i === 99){
                 grilleNavireJ += `<tr> ${ligneNavireJ}</tr>`;
@@ -260,7 +260,7 @@ class InitGame{
                 grilleBot += `<tr> ${ligneNavireBot}</tr>`;
                 ligneNavireBot = ``;
             }
-            if(!grilles[Math.floor(i/this.dimension)][i%this.dimension][0]) ligneNavireBot += `<td id =${i+1} class="color-div" style="background-color: #ffffff"></div></td>`;
+            if(!grilles[Math.floor(i/this.dimension)][i%this.dimension][0]) ligneNavireBot += `<td id =${i+1} class="color-div" style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 2px solid #11FAEC; box-shadow: 0 0 10px #11FAEC;"></div></td>`;
             if(i === (this.dimension * this.dimension)-1){
                 grilleBot += `<tr> ${ligneNavireBot}</tr>`;
                 ligneNavireBot = ``;
@@ -299,7 +299,7 @@ class InitGame{
                             <div> <table id="b">${recapNavire}</table> </div>  
                             <div> <table id="j">${recapNavire}</table> </div> 
                         </div>  `
-
+        document.querySelector('main').className = '';
         return jeuBis;
     }
 

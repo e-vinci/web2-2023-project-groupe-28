@@ -1,6 +1,7 @@
-import { clearPage, grow } from '../../utils/render';
+import { clearPage, grow, playVideoIfPaused } from '../../utils/render';
 
 const RankPage = () => {
+    playVideoIfPaused();
     clearPage();
     const main = document.querySelector('main');
     const login = `
