@@ -1,10 +1,13 @@
+
 /* eslint-disable no-console */
 import { setAuthenticatedUser } from '../../utils/auths';
-import { clearPage, grow, returnHomePage /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
+
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
 
 const LoginPage = () => {
+    playVideoIfPaused();
     clearPage();
     // renderPageTitle('Login');
     renderLoginForm();
@@ -17,7 +20,7 @@ function renderLoginForm() {
     const returnBtn = document.createElement('button');
     returnBtn.className = 'btn btn-outline';
     returnBtn.id = 'returnbtn';
-    returnBtn.innerText = '<--';
+    returnBtn.innerText = '<-';
 
     // créer une balise html <div>
     const div1 = document.createElement('div');
@@ -80,7 +83,7 @@ function renderLoginForm() {
 
     const registerPage = document.createElement('a');
     registerPage.className = 'label-text-alt link link-hover';
-    registerPage.innerText = 'have you already an account ?';
+    registerPage.innerText = "Create a free account";
     registerPage.id = 'cursor-Delete';
 
     const div6 = document.createElement('div');
@@ -89,8 +92,9 @@ function renderLoginForm() {
     const submit = document.createElement('input');
     submit.value = 'Login';
     submit.type = 'submit';
-    submit.className = 'btn btn-primary';
-    submit.id = 'cursor-Delete';
+    submit.className = 'btn btn-outline';
+    submit.id = 'neonButton';
+    submit.setAttribute('data-theme', 'luxury');
 
 
     /* ajoute la balise div à main 
