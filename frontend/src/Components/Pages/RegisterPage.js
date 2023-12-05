@@ -1,7 +1,7 @@
 import { clearPage, grow, returnHomePage /* , renderPageTitle */ } from '../../utils/render';
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
-// import Navigate from '../Router/Navigate';
+import Navbar from '../Navbar/Navbar';
 
 const RegisterPage = () => {
     clearPage();
@@ -166,6 +166,8 @@ async function onRegister(e) {
     console.log('Newly registered & authenticated user : ', authenticatedUser);
 
     setAuthenticatedUser(authenticatedUser);
+
+    Navbar();
     
     Navigate('/');
 }

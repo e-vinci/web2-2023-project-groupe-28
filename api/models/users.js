@@ -140,8 +140,7 @@ async function getUserFromEmail(email) {
   });
   if (record.length > 0) {
     const user = record[0];// même chose que const username = record[0].username;
-    console.log('Résultat getUserFromEmail');
-    console.log(user);
+
     return user;
   // eslint-disable-next-line no-else-return
   }
@@ -149,14 +148,15 @@ async function getUserFromEmail(email) {
 }
 
 async function createDataGame(email) {
-  console.log(`emailCreateDataGame : ${email}`);
+
   const user = await getUserFromEmail(email);
   const dataGame = {
     user: user.id,
     victoryNumber: 0,
     defeatNumber: 0,
     score: 0,
-  }
+  };
+
   console.log('userCreateDataGame : ');
   console.log(user);
   try {
@@ -165,9 +165,8 @@ async function createDataGame(email) {
     console.log(`recordCreateDataGame : ${record}`);
     return record;
   } catch (error) {
-    console.log(`error : ${error}`);
     // await pb.collection('users').delete(user.id);
-    return error;
+    return undefined;
   }
 }
 
@@ -181,16 +180,13 @@ async function register(username, email, password, passwordConfirm) {
   };
   try {
     const userFound = await getUserFromEmail(email);
-    console.log(`userfound undefined : ${userFound}`);
     if (userFound) return undefined;
-    console.log('userFound Register Passed' );
+
     const record = await pb.collection('users').create(user);
-    console.log(`recordRegister : ${record}`);
     const dataGame = await createDataGame(email);
     if (!dataGame) {
       return undefined;
     }
-    console.log('Register dataGame Passed');
     console.log(`RegisterRecord : ${record}`);
     return record;
   } catch (error) {

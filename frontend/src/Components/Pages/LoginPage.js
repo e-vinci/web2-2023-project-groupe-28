@@ -1,6 +1,8 @@
+/* eslint-disable no-console */
 import { setAuthenticatedUser } from '../../utils/auths';
 import { clearPage, grow, returnHomePage /* , renderPageTitle */ } from '../../utils/render';
 import Navigate from '../Router/Navigate';
+import Navbar from '../Navbar/Navbar';
 
 const LoginPage = () => {
     clearPage();
@@ -148,6 +150,8 @@ async function onLogin(event) {
     console.log('Authenticated user : ', authenticatedUser);
 
     setAuthenticatedUser(authenticatedUser);
+
+    Navbar();
     
     Navigate('/');
     
