@@ -1889,6 +1889,15 @@ html {
   line-height: 1.25rem;
 }
 
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
 .card.image-full :where(figure) {
   overflow: hidden;
   border-radius: inherit;
@@ -2245,10 +2254,18 @@ html {
   line-height: 1.25rem;
 }
 
+.card-compact .card-title {
+  margin-bottom: 0.25rem;
+}
+
 .card-normal .card-body {
   padding: var(--padding-card, 2rem);
   font-size: 1rem;
   line-height: 1.5rem;
+}
+
+.card-normal .card-title {
+  margin-bottom: 0.75rem;
 }
 
 .z-\[1\] {
@@ -2257,6 +2274,20 @@ html {
 
 .m-1 {
   margin: 0.25rem;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
 }
 
 .mt-3 {
@@ -2277,6 +2308,10 @@ html {
 
 .w-52 {
   width: 13rem;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .w-full {
@@ -2318,8 +2353,17 @@ html {
   padding: 0.5rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .text-center {
   text-align: center;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
 }
 
 .text-xl {
@@ -2329,6 +2373,11 @@ html {
 
 .normal-case {
   text-transform: none;
+}
+
+.text-primary-content {
+  --tw-text-opacity: 1;
+  color: hsl(var(--pc) / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -2402,6 +2451,35 @@ footer {
   border-radius: 50%;
   pointer-events: none;
   transition: 0.01s;
+}
+
+#page-container-rule {
+  display: contents;
+  justify-content: center;
+  height: 50vh;
+}
+
+#padding {
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+#card-body-rule {
+  background-color: white;
+  color: black;
+}
+
+#title-rule{
+  text-align: center;
+  font-size: 4ch;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#second-title-rule{
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 @media (min-width: 1024px) {
