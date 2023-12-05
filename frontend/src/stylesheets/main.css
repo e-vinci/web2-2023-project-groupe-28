@@ -107,7 +107,34 @@ footer {
   mix-blend-mode: difference;
   border-radius: 50%;
   pointer-events: none;
-  transition: 0.001s;
+
+#page-container-rule {
+  display: contents;
+  justify-content: center;
+  height: 50vh;
+}
+
+#padding {
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+#card-body-rule {
+  background-color: white;
+  color: black;
+}
+
+#title-rule{
+  text-align: center;
+  font-size: 4ch;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#second-title-rule{
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .h1 {
