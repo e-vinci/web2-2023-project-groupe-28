@@ -1,5 +1,9 @@
+
+import { setAuthenticatedUser } from '../../utils/auths';
+import Navigate from '../Router/Navigate';
+import Navbar from '../Navbar/Navbar';
 import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
-// import Navigate from '../Router/Navigate';
+
 
 const RegisterPage = () => {
     playVideoIfPaused();
@@ -127,10 +131,49 @@ function renderRegisterForm() {
     div5.appendChild(confirmPassword);
     form.appendChild(div6);
     div6.appendChild(submit);
+    form.addEventListener('submit', onRegister);
 
     returnHomePage();
 
     grow();
+}
+async function onRegister(e) {
+    e.preventDefault();
+    const email = document.querySelector('#email').value;
+    const username = document.querySelector('#username').value;
+    const password = document.querySelector('#pwd1').value;
+    const passwordConfirm = document.querySelector('#pwd2').value;
+    // eslint-disable-next-line no-use-before-define
+    if (password !== passwordConfirm) return;
+
+    const options = {
+        method: 'POST',
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+          passwordConfirm,
+        }),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+    };
+  
+    const response = await fetch('/api/auths/register', options);
+  
+    if (!response.ok) {
+        throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+    }
+
+    const authenticatedUser = await response.json();
+
+    console.log('Newly registered & authenticated user : ', authenticatedUser);
+
+    setAuthenticatedUser(authenticatedUser);
+
+    Navbar();
+    
+    Navigate('/');
 }
 
 export default RegisterPage;
