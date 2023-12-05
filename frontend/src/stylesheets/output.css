@@ -2284,6 +2284,22 @@ html {
   margin-bottom: 0.75rem;
 }
 
+.z-\[1\] {
+  z-index: 1;
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.my-8 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -2308,6 +2324,10 @@ html {
 
 .grid {
   display: grid;
+}
+
+.w-72 {
+  width: 18rem;
 }
 
 .w-72 {
@@ -2373,6 +2393,10 @@ html {
   padding: 1rem;
 }
 
+.p-4 {
+  padding: 1rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -2380,6 +2404,11 @@ html {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
 }
 
 .text-4xl {
@@ -2390,6 +2419,12 @@ html {
 .text-primary-content {
   --tw-text-opacity: 1;
   color: hsl(var(--pc) / var(--tw-text-opacity));
+}
+
+.shadow {
+  --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .shadow-2xl {
@@ -2697,6 +2732,35 @@ span:nth-child(2){
     top: -18%;
     transform: rotate(45deg);
   }
+}
+
+#page-container-rule {
+  display: contents;
+  justify-content: center;
+  height: 50vh;
+}
+
+#padding {
+  padding-top: 50px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+#card-body-rule {
+  background-color: white;
+  color: black;
+}
+
+#title-rule{
+  text-align: center;
+  font-size: 4ch;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+#second-title-rule{
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 @media (min-width: 1024px) {
