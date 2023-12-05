@@ -1,7 +1,8 @@
-import { clearPage, grow /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
 import Navigate from '../Router/Navigate';
 
 const LoginPage = () => {
+    playVideoIfPaused();
     clearPage();
     // renderPageTitle('Login');
     renderLoginForm();
@@ -10,6 +11,11 @@ const LoginPage = () => {
 function renderLoginForm() {
     // récupère le contenu de la balise html <main>
     const main = document.querySelector('main');
+
+    const returnBtn = document.createElement('button');
+    returnBtn.className = 'btn btn-outline';
+    returnBtn.id = 'returnbtn';
+    returnBtn.innerText = '<-';
 
     // créer une balise html <div>
     const div1 = document.createElement('div');
@@ -32,6 +38,7 @@ function renderLoginForm() {
 
     const title = document.createElement('h1');
     // écrit dans la balise h1 <h1>Login</h1>
+    title.className = 'label-text';
     title.innerText = 'Login';
 
     const label1 = document.createElement('label');
@@ -71,7 +78,7 @@ function renderLoginForm() {
 
     const registerPage = document.createElement('a');
     registerPage.className = 'label-text-alt link link-hover';
-    registerPage.innerText = 'have you already an account ?';
+    registerPage.innerText = "Create a free account";
     registerPage.id = 'cursor-Delete';
 
     const div6 = document.createElement('div');
@@ -80,8 +87,9 @@ function renderLoginForm() {
     const submit = document.createElement('input');
     submit.value = 'Login';
     submit.type = 'submit';
-    submit.className = 'btn btn-primary';
-    submit.id = 'cursor-Delete';
+    submit.className = 'btn btn-outline';
+    submit.id = 'neonButton';
+    submit.setAttribute('data-theme', 'luxury');
 
 
     /* ajoute la balise div à main 
@@ -92,6 +100,7 @@ function renderLoginForm() {
     </main>
     */
     main.appendChild(div1);
+    main.appendChild(returnBtn);
     div1.appendChild(div2);
     div2.appendChild(div3);
     div3.appendChild(form);
@@ -112,6 +121,8 @@ function renderLoginForm() {
     registerPage.onclick = () => {
         Navigate('/register');
     }
+
+    returnHomePage();
 
     grow();
 }   

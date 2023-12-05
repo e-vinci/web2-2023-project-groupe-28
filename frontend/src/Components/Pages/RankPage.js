@@ -1,6 +1,7 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, grow, playVideoIfPaused } from '../../utils/render';
 
 const RankPage = () => {
+    playVideoIfPaused();
     clearPage();
     const main = document.querySelector('main');
     const login = `
@@ -16,7 +17,7 @@ const RankPage = () => {
     `
     main.innerHTML = login;
 
-
+    grow();
   };
   
 export default RankPage;
