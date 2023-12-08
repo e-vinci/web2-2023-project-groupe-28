@@ -1,4 +1,5 @@
-const jwt = require('jsonwebtoken');
+/* eslint-disable import/no-unresolved */
+/* const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 const path = require('node:path');
 const { parse, serialize } = require('../utils/json');
@@ -98,4 +99,78 @@ module.exports = {
   login,
   register,
   readOneUserFromUsername,
+}; */
+
+// eslint-disable-next-line consistent-return
+/* async function login(email, password) {
+  let authData;
+  try {
+    authData = await pb.collection('users').authWithPassword(email, password);
+    currentUser = authData;
+    return authData;
+  } catch (error) {
+    if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
+      // Handle authentication failure
+      return undefined;
+    }
+
+    // throw error;
+  }
+}
+
+async function getCurrentUser() {
+  return currentUser;
+}
+
+module.exports = {
+  login,
+  getCurrentUser,
+}; */
+const PocketBase = require('pocketbase/cjs');
+const { getUsernameFromEmail } = require('../utils/dbUtils');
+
+const pb = new PocketBase('https://battleships.hop.sh');
+
+// let currentUser;
+
+async function register(username, email, password, passwordConfirm) {
+  const user = {
+    username,
+    email,
+    password,
+    passwordConfirm,
+  };
+  try {
+    const userFound = await getUsernameFromEmail(email);
+    console.log(`userfound : ${userFound}`);
+    if (userFound) return undefined;
+    const record = await pb.collection('users').create(user);
+    console.log(`record : ${record}`);
+    return record;
+  } catch (error) {
+    return error;
+  }
+}
+
+// eslint-disable-next-line consistent-return
+async function login(email, password) {
+  try {
+    const userFound = await getUsernameFromEmail(email);
+    console.log(`userfound : ${userFound}`);
+    if (!userFound) return undefined;
+    const authData = await pb.collection('users').authWithPassword(userFound, password);
+    return authData;
+  } catch (error) {
+    if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
+      // Handle authentication failure
+      return undefined;
+    }
+
+    // throw error;
+  }
+}
+
+module.exports = {
+  register,
+  login,
 };

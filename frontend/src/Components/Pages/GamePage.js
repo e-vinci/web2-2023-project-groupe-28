@@ -1,38 +1,52 @@
-import Phaser from 'phaser';
-import GameScene from '../Game/GameScene';
-import { clearPage } from '../../utils/render';
+/* eslint-disable no-plusplus */
+/* eslint-disable no-import-assign */
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import { clearPage, grow, returnHomePage } from '../../utils/render';
+import InitGame from '../Game/Game';
+import ChooseLvl from '../Game/ChooseLvl';
 
-let game;
 
 const GamePage = () => {
-  clearPage();
-  const phaserGame = `
-<div id="gameDiv" class="justify-self-center"">
-</div>`;
+    clearPage();
 
-  const main = document.querySelector('main');
-  main.innerHTML = phaserGame;
+    // Pause the background video
+    const bgVideo = document.querySelector('#bg-video'); // Replace '#bgVideoId' with the actual id or selector of your background video
+    if (bgVideo) {
+        bgVideo.pause();
+    }
 
-  const config = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 600,
-    physics: {
-      default: 'arcade',
-      arcade: {
-        gravity: { y: 300 },
-        debug: false,
-      },
-    },
-    scene: [GameScene],
-    //  parent DOM element into which the canvas created by the renderer will be injected.
-    parent: 'gameDiv',
-  };
+    const choose = new ChooseLvl();
+    choose.chooseLvl();
 
-  // there could be issues when a game was quit (events no longer working)
-  // therefore destroy any started game prior to recreate it
-  if (game) game.destroy(true);
-  game = new Phaser.Game(config);
+    let lvl;
+    const boutons = document.querySelectorAll("#cursor-Delete");
+    
+    boutons.forEach((bouton) => {
+        bouton.addEventListener('click', () => {
+            lvl = bouton.value;
+            console.log(lvl);
+            if(lvl !== undefined){
+                const game = new InitGame(lvl);
+                game.renderMenuFromString();
+                const divs = document.querySelectorAll("td.color-div");
+                const divsBis = document.querySelectorAll("td.color-div2"); 
+
+                divs.forEach((div) => {
+                    div.addEventListener("click", () => {
+                        if(game.tourJoueur(div) && game.compteurNavireBotTouche < 20){
+                            game.tourBot(divsBis);
+                        }               
+                    });
+                });
+            }
+        });
+    });    
+
+    grow();
+    
+    returnHomePage();
 };
+
 
 export default GamePage;

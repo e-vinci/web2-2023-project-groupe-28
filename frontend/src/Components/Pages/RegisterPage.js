@@ -1,7 +1,8 @@
-import { clearPage, grow /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
 // import Navigate from '../Router/Navigate';
 
 const RegisterPage = () => {
+    playVideoIfPaused();
     clearPage();
     // renderPageTitle('Login');
     renderRegisterForm();
@@ -10,6 +11,11 @@ const RegisterPage = () => {
 function renderRegisterForm() {
     const main = document.querySelector('main');
 
+    const returnBtn = document.createElement('button');
+    returnBtn.className = 'btn btn-outline';
+    returnBtn.id = 'returnbtn';
+    returnBtn.innerText = '<-';
+
     const div1 = document.createElement('div');
     div1.className = 'justify-self-center';
 
@@ -17,7 +23,7 @@ function renderRegisterForm() {
     div2.className = 'hero-content flex-col lg:flex-row-reverse scale-110';
 
     const div3 = document.createElement('div');
-    div3.className = 'card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-50';
+    div3.className = 'card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-0';
 
     const form = document.createElement('form');
     form.className = 'card-body';
@@ -27,6 +33,7 @@ function renderRegisterForm() {
     div4.className = 'form-control';
 
     const title = document.createElement('h1');
+    title.className = 'label-text';
     title.innerText = 'Create an Account';
 
     const label1 = document.createElement('label');
@@ -92,12 +99,14 @@ function renderRegisterForm() {
     div6.className = 'form-control mt-6';
 
     const submit = document.createElement('input');
-    submit.className = 'btn btn-primary';
+    submit.className = 'btn btn-outline';
     submit.value = 'Register';
     submit.type = 'submit';
-    submit.id = 'cursor-Delete';
+    submit.id = 'neonButton';
+    submit.setAttribute('data-theme', 'luxury');
 
     main.appendChild(div1);
+    main.appendChild(returnBtn);
     div1.appendChild(div2);
     div2.appendChild(div3);
     div3.appendChild(form);
@@ -118,6 +127,8 @@ function renderRegisterForm() {
     div5.appendChild(confirmPassword);
     form.appendChild(div6);
     div6.appendChild(submit);
+
+    returnHomePage();
 
     grow();
 }

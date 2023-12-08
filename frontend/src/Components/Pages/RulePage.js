@@ -1,6 +1,10 @@
-import { clearPage } from '../../utils/render';
+import { clearPage, playVideoIfPaused } from '../../utils/render';
+// importe une image
+
 
 const Rulepage = () => {
+    
+    playVideoIfPaused();
     clearPage();
     const main = document.querySelector('main');
     main.innerHTML = `

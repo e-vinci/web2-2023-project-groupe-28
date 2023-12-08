@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-lonely-if */
 
 
 /**
@@ -12,61 +14,55 @@
 const Footer = () => {
     const footerWrapper = document.querySelector('#footerWrapper');
     const footer = `
-        <div class="dropdown dropdown-hover dropdown-right">
-            <label id="cursor-Delete" data-theme="luxury" tabindex="0" class="btn m-1">Themes</label>
-            <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52" style="display: flex; flex-direction: row; width: 100vw;">
-
-                <li><a id="cursor-Delete" data-theme="luxury">luxury</a></li> 
-                <li><a id="cursor-Delete" data-theme="forest">forest</a></li>
-                <li><a id="cursor-Delete" data-theme="dark">dark</a></li> 
-
-                <li><a id="cursor-Delete" data-theme="synthwave">synthwave</a></li>
-                <li><a id="cursor-Delete" data-theme="halloween">halloween</a></li>
-                <li><a id="cursor-Delete" data-theme="black">black</a></li>
-
-                <li><a id="cursor-Delete" data-theme="dracula">dracula</a></li>
-                <li><a id="cursor-Delete" data-theme="business">business</a></li>
-                <li><a id="cursor-Delete" data-theme="night">night</a></li>
-
-                <li><a id="cursor-Delete" data-theme="coffee">coffee</a></li>
-                <li><a id="cursor-Delete" data-theme="aqua">aqua</a></li>
-                <li><a id="cursor-Delete" data-theme="garden">garden</a></li>
-
-                <li><a id="cursor-Delete" data-theme="retro">retro</a></li>
-                <li><a id="cursor-Delete" data-theme="valentine">valentine</a></li>
-                <li><a id="cursor-Delete" data-theme="wireframe">wireframe</a></li>
-            </ul>
-        </div>
+    <button id="neonButton" class="btn btn-outline" data-theme="luxury">fullscreen</button>
+    
     `;
   
     footerWrapper.innerHTML = footer;
   
-    // ----------------------------------------------changement de theme----------------------------------------------------------------------
 
-  // Sélectionnez tous les liens du dropdown
-  const dropdownLinks = document.querySelectorAll('.menu li a');
+     // get the button
+  const btn = footerWrapper.querySelector('.btn');
 
-  // Définissez une fonction pour changer le thème
-  function changeTheme(theme) {
-    // Récupérez la balise <html>
-    const htmlTag = document.getElementById('htmlTag');
+  // add event listener to the button
+  btn.addEventListener('click', toggleFullScreen);
 
-    // Définissez la valeur de l'attribut data-theme de la balise <html>
-    htmlTag.setAttribute('data-theme', theme);
+   // sound mute/unmute when clicking on the button
+   const bgAudio = document.getElementById('bg-audio');
 
-  };
-
-  // Ajoutez un gestionnaire d'événements pour le clic sur les liens du dropdown
-  dropdownLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      // Récupérez la valeur de l'attribut data-theme du lien
-      const themeValue = link.getAttribute('data-theme');
-
-      // Appelez la fonction pour changer le thème
-      changeTheme(themeValue);
-    });
+   document.addEventListener('fullscreenchange', () => {
+    if (document.fullscreenElement) {
+      bgAudio.play();
+    } else {
+      bgAudio.pause();
+    }
   });
+};
+
+    function toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        if (document.documentElement.requestFullscreen) {
+          document.documentElement.requestFullscreen();
+        } else if (document.documentElement.mozRequestFullScreen) { /* Firefox */
+          document.documentElement.mozRequestFullScreen();
+        } else if (document.documentElement.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+          document.documentElement.webkitRequestFullscreen();
+        } else if (document.documentElement.msRequestFullscreen) { /* IE/Edge */
+          document.documentElement.msRequestFullscreen();
+        }
+      } else {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.mozCancelFullScreen) { /* Firefox */
+          document.mozCancelFullScreen();
+        } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) { /* IE/Edge */
+          document.msExitFullscreen();
+        }
+      }
+    }
   
-  };
+    
   
   export default Footer;
