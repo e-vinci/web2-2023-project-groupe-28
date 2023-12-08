@@ -129,12 +129,25 @@ class InitGame{
 
             
             // si la case n'est pas jouée
-            if((lig > -1 && lig < this.dimension && col > -1 && col < this.dimension) &&!this.grilleB[lig][col][0]){
+            if((lig > -1 && lig < this.dimension && col > -1 && col < this.dimension) && !this.grilleB[lig][col][0]){
                 coup = true;
                 // dis que la case est jouée
                 this.grilleB[lig][col][0] = true;
                 // si la case contient un navire
                 if(this.grilleB[lig][col][1]){
+                    if(lig-1 >= 0 && col-1 >= 0){
+                        this.grilleB[lig-1][col-1][0] = true;
+                    }
+                    if(lig-1 >= 0 && col+1 < this.dimension){
+                        this.grilleB[lig-1][col+1][0] = true;
+                    }
+                    if(lig+1 < this.dimension && col-1 >= 0){
+                        this.grilleB[lig+1][col-1][0] = true;
+                    }
+                    if(lig+1 < this.dimension && col+1 < this.dimension){
+                        this.grilleB[lig+1][col+1][0] = true;
+                    }
+
                     coup = false;
 
                     if(this.difficult > 1){
@@ -176,7 +189,7 @@ class InitGame{
             else if(this.difficult > 0){
                 nombreCaseJoue+=1;                       
             }
-            if(nombreCaseJoue === 4){
+            if(nombreCaseJoue >= 4){
                 this.lastHit[0] = false;
             }
         }while(!coup);
@@ -287,19 +300,18 @@ class InitGame{
         recapNavire += ligneTailleNav;
         
         grilleNavireJ = `<table>${grilleNavireJ}</table>`;
-        grilleBot = `<table id="tab" style="float : right">${grilleBot}</table>`;        
+        grilleBot = `<table id="tab" style="float : right">${grilleBot}</table>`; 
 
-        const jeu = `<div class="center"> <div class="center"> ${grilleNavireJ} </div> <div class="center"> ${grilleBot} </div></div>`;
+        const jeu = `<div class="center"> <div class="center"> ${grilleNavireJ} ${grilleBot} </div></div>`;
         const jeuBis = `<div class="center">  
-                            <div> grille </div>  
-                            <div> grille </div> 
+                            
                         </div> 
                         ${jeu} 
                         <div class="center">  
                             <div> <table id="b">${recapNavire}</table> </div>  
                             <div> <table id="j">${recapNavire}</table> </div> 
                         </div>  `
-        document.querySelector('main').className = '';
+
         return jeuBis;
     }
 
