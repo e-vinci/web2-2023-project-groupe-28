@@ -107,7 +107,7 @@ footer {
   mix-blend-mode: difference;
   border-radius: 50%;
   pointer-events: none;
-
+}
 #page-container-rule {
   display: contents;
   justify-content: center;
