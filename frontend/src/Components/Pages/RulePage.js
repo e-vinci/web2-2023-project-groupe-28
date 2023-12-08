@@ -7,7 +7,7 @@ const Rulepage = () => {
     <div id="page-container-rule" class="card w-72 mx-auto my-8 bg-base-100 text-primary-content p-4" >
         <div id="padding">
             <div id="card-body-rule" class="card-body">
-                <h1 id="title-rule" class="card-title text-2xl">Rules</h1>
+                <div id="title-rule" class="card-title text-2xl text-center" >Rules</div>
                 <h3 id="second-title-rule" class="text-xl">Game Setup :</h3>
                 <p class="mb-4">Each player places their fleet of ships on their own grid. The standard fleet consists of ships
                 of varying lengths, such as aircraft carriers, battleships, cruisers, destroyers, and submarines.
