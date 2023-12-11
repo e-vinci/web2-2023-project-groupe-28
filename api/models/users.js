@@ -1,3 +1,4 @@
+/* eslint-disable padded-blocks */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 /* const jwt = require('jsonwebtoken');
@@ -157,12 +158,9 @@ async function createDataGame(email) {
     score: 0,
   };
 
-  console.log('userCreateDataGame : ');
-  console.log(user);
   try {
-    console.log(`user.id : ${user.id}`);
     const record = await pb.collection('leaderboard').create(dataGame);
-    console.log(`recordCreateDataGame : ${record}`);
+
     return record;
   } catch (error) {
     // await pb.collection('users').delete(user.id);
