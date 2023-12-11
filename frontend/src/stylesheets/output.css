@@ -2284,24 +2284,6 @@ html {
   margin-bottom: 0.75rem;
 }
 
-.z-\[1\] {
-  z-index: 1;
-}
-.mx-auto {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.my-8 {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-}
-
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -2554,8 +2536,13 @@ footer {
 }
 
 #card-body-rule {
-  background-color: white;
   color: black;
+  -webkit-backdrop-filter: blur(22px);
+          backdrop-filter: blur(22px);
+  /* Add a blur effect */
+  box-sizing: border-box;
+  padding: 20px;
+  -webkit-text-stroke: 0.5px black;
 }
 
 #title-rule{
