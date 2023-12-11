@@ -1,0 +1,9 @@
+@baseUrl = http://localhost:3000
+
+PATCH {{baseUrl}}/profil/tarik@gmail.com
+Content-Type: application/json
+
+{
+    "username":"tarik test"
+}
+
