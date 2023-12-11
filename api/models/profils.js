@@ -5,22 +5,17 @@ const { parse, serialize } = require('../utils/json');
 
 const pb = new pocketBase('https://battleships.hop.sh');
 
-// const { getCurrentUser } = require('./users');
-const { getUserFromEmail } = require('./users');
-
-// function to get user Id by is email
-async function getUserIdByEmail(email) {
-  const user = getUserFromEmail(email);
-  const userId = user.id;
-  return userId;
-}
+const { getCurrentUser } = require('./users');
+// const { getUserFromEmail } = require('./users');
 
 // function to update user data with is email
-async function updateUserInfo(email, data){
+/* eslint-disable */
+async function updateUserInfo(data){
+  const user = getCurrentUser();
+  const userId = user.id;
   console.log('in fct updateUserInfo');
   try{
-    const userId = getUserIdByEmail(email); 
-    if(!userId) return undefined;
+    if(!user) return undefined;
     if(!data) return undefined;
     const record = await pb.collection('users').update(userId, data);
     return record;

@@ -201,6 +201,7 @@ async function login(email, password) {
     if (!userFound) return undefined;
     const authData = await pb.collection('users').authWithPassword(userFound.username, password);
     currentUser = pb.authStore.model;
+    console.log(`currentUser : ${currentUser}`);
     return authData;
   } catch (error) {
     if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
@@ -219,5 +220,5 @@ async function getCurrentUser() {
 module.exports = {
   register,
   login,
-  getUserFromEmail,
+  getCurrentUser,
 };

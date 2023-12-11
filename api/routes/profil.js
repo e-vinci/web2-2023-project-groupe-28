@@ -3,11 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 const { updateUserInfo } = require('../models/profils');
-const { getUserFromEmail } = require('../models/users');
+const { getCurrentUser } = require('../models/users');
 
 /* GET users update info. */
 router.patch('/:email', (req, res) => {
-  const user = getUserFromEmail(req.params.email);
+  console.log('in patch');
+  const user = getCurrentUser();
   if (!user) return res.sendStatus(404);
   const data = {
     id: user.id,
