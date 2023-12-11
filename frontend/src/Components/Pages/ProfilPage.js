@@ -2,51 +2,107 @@
     to review when authenticated is done
     need user to be authenticated
 */
-import { clearPage, grow } from '../../utils/render';
+import { getAuthenticatedUser } from '../../utils/auths';
+import { clearPage, grow, returnHomePage } from '../../utils/render';
+
 
 const ProfilPage = () =>{
     clearPage();
-    const main = document.querySelector('main');
-    main.innerHTML = `<div class="page-content page-container" id="page-content">
-    <div class="padding">
-        <div class="row container d-flex justify-content-center">
-            <div class="col-xl-6 col-md-12">
-                <div class="card user-card-full">
-                    <div class="row m-l-0 m-r-0">
-                        <div class="col-sm-4 bg-img-profil user-profile">
-                            <div class="card-block text-center">
-                                <div class="img-profil">
-                                    <img src="https://img.icons8.com/bubbles/100/000000/user.png" class="img-radius" alt="User-Profile-Image">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-8">
-                            <div class="card-block">
-                                <h6 class="m-b-20 p-b-5 b-b-default title-info-user">Information</h6>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <p class="box-ecart title-info-user">Username</p>
-                                            <h6 class="text-muted title-info-user"></h6>
-                                            <p class="box-ecart title-info-user">Number of game played</p>
-                                            <h6 class="text-muted title-info-user"></h6>
-                                            <p class="box-ecart title-info-user">Rank</p>
-                                            <h6 class="text-muted title-info-user"></h6>
-                                            <p class="box-ecart title-info-user">Number of win game</p>
-                                            <h6 class="text-muted title-info-user"></h6>
-                                            <p class="box-ecart title-info-user">Number of loss game</p>
-                                            <h6 class="text-muted title-info-user"></h6>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`;
-
-    grow();
+    
+    renderProfilPageForm();
 };  
 
+function renderProfilPageForm() {
+    
+    const authenticatedUser = getAuthenticatedUser();
+    const main = document.querySelector('main');
+
+    const returnBtn = document.createElement('button');
+    returnBtn.className = 'btn btn-outline';
+    returnBtn.id = 'returnbtn';
+    returnBtn.innerText = '<-';
+
+    const div1 = document.createElement('div');
+    div1.className = 'justify-self-center';
+
+    const div2 = document.createElement('div');
+    div2.className = 'hero-content flex-col lg:flex-row-reverse scale-110';
+
+    const div3 = document.createElement('div');
+    div3.className = 'card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-0';
+
+    const form = document.createElement('form');
+    form.className = 'card-body';
+    form.style.paddingTop = '20%';
+
+    const div4 = document.createElement('div');
+    div4.className = 'form-control';
+
+    const title = document.createElement('h1');
+    title.className = 'label-text';
+    title.innerText = 'Profil User';
+
+    const label1 = document.createElement('label');
+    label1.className = 'label';
+
+    const span1 = document.createElement('span');
+    span1.className = 'label-text';
+    span1.innerText = 'Email';
+
+    const span1Email = document.createElement('span');
+    span1Email.className = 'label-text'
+    span1Email.innerText = `${authenticatedUser.email}`
+
+    const label2 = document.createElement('label');
+    label2.className = 'label';
+
+    const span2 = document.createElement('span');
+    span2.className = 'label-text';
+    span2.innerText = 'Username';
+
+    const div5 = document.createElement('div');
+    div5.className = 'form-control';
+
+    const label3 = document.createElement('label');
+    label3.className = 'label';
+
+    const span3 = document.createElement('span');
+    span3.className ='label-text';
+    span3.innerText = 'Password';
+
+    const label4 = document.createElement('label');
+    label4.className = 'label';
+
+    const div6 = document.createElement('div');
+    div6.className = 'form-control mt-6';
+
+    const submit = document.createElement('input');
+    submit.className = 'btn btn-outline';
+    submit.value = 'Register';
+    submit.type = 'submit';
+    submit.id = 'neonButton';
+    submit.setAttribute('data-theme', 'luxury');
+
+    main.appendChild(div1);
+    main.appendChild(returnBtn);
+    div1.appendChild(div2);
+    div2.appendChild(div3);
+    div3.appendChild(form);
+    form.appendChild(div4);
+    div4.appendChild(title);
+    div4.appendChild(label1);
+    label1.appendChild(span1);
+    div4.appendChild(label2);
+    label2.appendChild(span2);
+    form.appendChild(div5);
+    div5.appendChild(label3);
+    label3.appendChild(span3)
+    div5.appendChild(label4);
+    form.appendChild(div6);
+    div6.appendChild(submit);
+
+    returnHomePage();
+
+    grow();
+}
 export default ProfilPage;
