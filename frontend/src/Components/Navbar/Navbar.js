@@ -45,7 +45,7 @@ function renderNavbar() {
 
 <div class="navbar-center">
 </div>
-<p>Hi ${authenticatedUser?.record.username} !</p>
+<p>Hi ${authenticatedUser?.record?.username ?? authenticatedUser?.username} !</p>
 <div class="navbar-end">
 
 <button id="neonButton" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/new" style="margin-right: 3mm;">New Page</button>
