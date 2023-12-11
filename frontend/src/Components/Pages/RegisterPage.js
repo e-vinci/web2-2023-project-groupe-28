@@ -1,9 +1,12 @@
-import { clearPage, grow, returnHomePage /* , renderPageTitle */ } from '../../utils/render';
+
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
+import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
+
 
 const RegisterPage = () => {
+    playVideoIfPaused();
     clearPage();
     // renderPageTitle('Login');
     renderRegisterForm();
@@ -15,7 +18,7 @@ function renderRegisterForm() {
     const returnBtn = document.createElement('button');
     returnBtn.className = 'btn btn-outline';
     returnBtn.id = 'returnbtn';
-    returnBtn.innerText = '<--';
+    returnBtn.innerText = '<-';
 
     const div1 = document.createElement('div');
     div1.className = 'justify-self-center';
@@ -24,7 +27,7 @@ function renderRegisterForm() {
     div2.className = 'hero-content flex-col lg:flex-row-reverse scale-110';
 
     const div3 = document.createElement('div');
-    div3.className = 'card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-50';
+    div3.className = 'card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-0';
 
     const form = document.createElement('form');
     form.className = 'card-body';
@@ -100,10 +103,11 @@ function renderRegisterForm() {
     div6.className = 'form-control mt-6';
 
     const submit = document.createElement('input');
-    submit.className = 'btn btn-primary';
+    submit.className = 'btn btn-outline';
     submit.value = 'Register';
     submit.type = 'submit';
-    submit.id = 'cursor-Delete';
+    submit.id = 'neonButton';
+    submit.setAttribute('data-theme', 'luxury');
 
     main.appendChild(div1);
     main.appendChild(returnBtn);
