@@ -1,22 +1,28 @@
-import { clearPage, grow, playVideoIfPaused } from '../../utils/render';
+/*eslint-disable*/
+import { clearPage, grow, playVideoIfPaused, returnHomePage } from '../../utils/render';
+import { getAuthenticatedUserLeaderboard } from '../../utils/leaderboard';
+
 
 const RankPage = () => {
     playVideoIfPaused();
     clearPage();
+    const user = getAuthenticatedUserLeaderboard();
     const main = document.querySelector('main');
     const login = `
     
     <div id="page-container-rule" class="card w-72 mx-auto my-8 bg-base-100 text-primary-content p-4" >
         <div id="padding">
+            <button class="btn btn-outline" id="returnbtn"><-</button>
             <div id="card-body-rule" class="card-body text-center">
                 <div id="title-rule" class="card-title text-2xl text-center">Rank</div>  
-
+                <br>
                 <p> N° | player :</p>
-                <p> 1  | player1</p>
-                <p> 2  | player2</p>
-                <p> 3  | player3</p>
-                <p> 4  | player4</p>
-                <p> 5  | player5</p>
+                <br>
+                <p> 1  | Arthi25</p>
+                <p> 2  | heathcliff</p>
+                <p> 3  | boxvers</p>
+                <p> 4  | nemuriciu</p>
+                <p> 5  | jdrjuju</p>
                 <p> 6  | player6</p>
                 <p> 7  | player7</p>
                 <p> 8  | player8</p>
@@ -28,7 +34,7 @@ const RankPage = () => {
   
     `
     main.innerHTML = login;
-
+    returnHomePage();
     grow();
   };
   
