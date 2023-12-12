@@ -16,6 +16,15 @@ const renderPageTitle = (title) => {
   main.appendChild(pageTitle);
 };
 
+const renderError = (error) => {
+  const spanerror1 = document.querySelector('spanError');
+  spanerror1.className = 'label-text-alt';
+  spanerror1.style.color = 'white';
+  spanerror1.style.textDecoration = 'underline';
+  spanerror1.style.fontWeight = 'bold'; // Make the text bold
+  spanerror1.innerText = error;
+}
+
 // aggrandit le curseur quand il passe sur un lien, un bouton ou un champ de saisie
 function grow() {
   const links = Array.from(document.querySelectorAll("input, button, a"));
@@ -48,4 +57,4 @@ function playVideoIfPaused() {
   }
 }
 
-export { clearPage, renderPageTitle, grow, returnHomePage, playVideoIfPaused };
+export { clearPage, renderPageTitle, grow, returnHomePage, playVideoIfPaused, renderError };

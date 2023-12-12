@@ -102,6 +102,8 @@ function renderRegisterForm() {
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
 
+    const spanerror1 = document.createElement('span');
+
     const submit = document.createElement('input');
     submit.className = 'btn btn-outline';
     submit.value = 'Register';
@@ -129,6 +131,7 @@ function renderRegisterForm() {
     div5.appendChild(label4);
     label4.appendChild(span4);
     div5.appendChild(confirmPassword);
+    div5.appendChild(spanerror1);
     form.appendChild(div6);
     div6.appendChild(submit);
     form.addEventListener('submit', onRegister);
