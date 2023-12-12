@@ -107,7 +107,7 @@ footer {
   mix-blend-mode: difference;
   border-radius: 50%;
   pointer-events: none;
-
+}
 #page-container-rule {
   display: contents;
   justify-content: center;
@@ -121,8 +121,12 @@ footer {
 }
 
 #card-body-rule {
-  background-color: white;
   color: black;
+  backdrop-filter: blur(22px); /* Add a blur effect */
+  box-sizing: border-box;
+  padding: 20px;
+  -webkit-text-stroke: 0.5px black;
+  
 }
 
 #title-rule{

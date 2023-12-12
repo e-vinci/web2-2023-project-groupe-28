@@ -1,3 +1,4 @@
+/* eslint-disable padded-blocks */
 /* eslint-disable no-console */
 /* eslint-disable import/no-unresolved */
 /* const jwt = require('jsonwebtoken');
@@ -132,7 +133,7 @@ const PocketBase = require('pocketbase/cjs');
 
 const pb = new PocketBase('https://battleships.hop.sh');
 
-// let currentUser;
+let currentUser;
 
 async function getUserFromEmail(email) {
   const record = await pb.collection('users').getFullList({
@@ -157,12 +158,9 @@ async function createDataGame(email) {
     score: 0,
   };
 
-  console.log('userCreateDataGame : ');
-  console.log(user);
   try {
-    console.log(`user.id : ${user.id}`);
     const record = await pb.collection('leaderboard').create(dataGame);
-    console.log(`recordCreateDataGame : ${record}`);
+
     return record;
   } catch (error) {
     // await pb.collection('users').delete(user.id);
@@ -200,6 +198,8 @@ async function login(email, password) {
     const userFound = await getUserFromEmail(email);
     if (!userFound) return undefined;
     const authData = await pb.collection('users').authWithPassword(userFound.username, password);
+    currentUser = pb.authStore.model;
+    console.log(`currentUser : ${currentUser}`);
     return authData;
   } catch (error) {
     if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
@@ -211,7 +211,12 @@ async function login(email, password) {
   }
 }
 
+async function getCurrentUser() {
+  return currentUser;
+}
+
 module.exports = {
   register,
   login,
+  getCurrentUser,
 };

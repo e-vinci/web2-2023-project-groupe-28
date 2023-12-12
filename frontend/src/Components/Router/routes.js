@@ -6,6 +6,7 @@ import LoginPage from '../Pages/LoginPage';
 import RegisterPage from '../Pages/RegisterPage';
 import RankPage from '../Pages/RankPage';
 import RulePage from '../Pages/RulePage';
+import Logout from '../Logout/Logout';;
 
 const routes = {
   '/': HomePage,
@@ -15,6 +16,7 @@ const routes = {
   '/register' : RegisterPage,
   '/rank' : RankPage,
   '/rule' : RulePage,
+  '/logout': Logout,
 };
 
 export default routes;

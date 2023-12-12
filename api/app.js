@@ -11,6 +11,7 @@ const usersRouter = require('./routes/users');
 const pizzaRouter = require('./routes/pizzas');
 const authsRouter = require('./routes/auths');
 const leaderboardRouter = require('./routes/leaderboard');
+const profilRouter = require('./routes/profil');
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use('/users', usersRouter);
 app.use('/pizzas', pizzaRouter);
 app.use('/auths', authsRouter);
 app.use('/leaderboard', leaderboardRouter);
+app.use('/profil', profilRouter);
 
 module.exports = app;
