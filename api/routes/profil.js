@@ -5,7 +5,13 @@ const router = express.Router();
 const { updateUserInfo } = require('../models/profils');
 const { getCurrentUser } = require('../models/users');
 
-/* GET users update info. */
+router.get('/', (req, res) => {
+  const user = getCurrentUser();
+  if (!user) return res.sendStatus(404);
+  return res.json(user);
+});
+
+/* patch users email update */
 router.patch('/:email', (req, res) => {
   console.log('in patch');
   const user = getCurrentUser();

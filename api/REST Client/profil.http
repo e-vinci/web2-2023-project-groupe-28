@@ -1,5 +1,7 @@
 @baseUrl = http://localhost:3000
 
+GET {{baseUrl}}/profil
+
 PATCH {{baseUrl}}/profil/tarik@gmail.com
 Content-Type: application/json
 
