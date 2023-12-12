@@ -1,19 +1,13 @@
-/* 
-    to review when authenticated is done
-    need user to be authenticated
-*/
+
 import { getAuthenticatedUser } from '../../utils/auths';
 import { clearPage, grow, returnHomePage } from '../../utils/render';
 
-
-const ProfilPage = () =>{
+const ProfilPage = () => {
     clearPage();
-    
     renderProfilPageForm();
-};  
+};
 
 function renderProfilPageForm() {
-    
     const authenticatedUser = getAuthenticatedUser();
     const main = document.querySelector('main');
 
@@ -50,14 +44,12 @@ function renderProfilPageForm() {
     span1.innerText = 'Email';
 
     const label1Email = document.createElement('label');
-    label1Email.className = 'label' 
+    label1Email.className = 'label';
 
     const span1Email = document.createElement('span');
-    span1Email.className = 'label-text'
-    span1Email.innerText = `${authenticatedUser.email}`
-
-    const div6 = document.createElement('div');
-    div6.className = 'form-control mt-6';
+    span1Email.className = 'label-text';
+    span1Email.id = 'span1Email';
+    span1Email.innerText = `${authenticatedUser.email}`;
 
     const submitEmail = document.createElement('input');
     submitEmail.value = 'Change Email';
@@ -78,6 +70,7 @@ function renderProfilPageForm() {
 
     const span2Username = document.createElement('span');
     span2Username.className = 'label-text';
+    span2Username.id = 'span2Username';
     span2Username.innerText = `${authenticatedUser.username}`;
 
     const submitUsername = document.createElement('input');
@@ -129,6 +122,8 @@ function renderProfilPageForm() {
     span5Win.className = 'label-text';
     span5Win.innerText = `${authenticatedUser.victoryNumber}`;
 
+
+
     main.appendChild(div1);
     main.appendChild(returnBtn);
     div1.appendChild(div2);
@@ -136,46 +131,62 @@ function renderProfilPageForm() {
     div3.appendChild(form);
     form.appendChild(div4);
     div4.appendChild(title);
+
+    // Email label + button
     div4.appendChild(label1);
     label1.appendChild(span1);
-    div4.appendChild(label1Email);
-    form.appendChild(div6);
-    div6.appendChild(submitUsername);
-    form.addEventListener('submit', changeEmail);
+    label1.appendChild(label1Email);
     label1Email.appendChild(span1Email);
+    label1Email.appendChild(submitEmail);
+    submitEmail.addEventListener('click', changeEmail);
+
+    // Username label + button
     div4.appendChild(label2);
     label2.appendChild(span2);
-    div4.appendChild(label2Username);
+    label2.appendChild(label2Username);
     label2Username.appendChild(span2Username);
-    form.appendChild(div6);
-    div6.appendChild(submitUsername);
-    form.addEventListener('submit', changeUsername);
+    label2Username.appendChild(submitUsername);
+    submitUsername.addEventListener('click', changeUsername);
+
+    // Score label
     div4.appendChild(label3);
     label3.appendChild(span3);
-    div4.appendChild(label3Score);
+    label3.appendChild(label3Score);
     label3Score.appendChild(span3Score);
+
+    // Loss label
     div4.appendChild(label4);
     label4.appendChild(span4);
-    div4.appendChild(label4Loss);
-    label4Loss.appendChild(span4Loss); 
+    label4.appendChild(label4Loss);
+    label4Loss.appendChild(span4Loss);
+
+    // Win label
     div4.appendChild(label5);
     label5.appendChild(span5);
-    div4.appendChild(label5Win);
+    label5.appendChild(label5Win);
     label5Win.appendChild(span5Win);
-    returnHomePage();
 
+
+    returnHomePage();
     grow();
 }
 
-// to modify
-async function changeEmail(event){
-    console.log('in change email');
-    return event.preventDefault();
-}
+function changeEmail(event) {
+    event.preventDefault();
+    const email = document.querySelector('#span1Email').value;
+    alert('Email changed');
+    console.log(email);
+    return email;
+};
 
-async function changeUsername(event){
-    console.log('in change username');
-    return event.preventDefault();
-}
+function changeUsername(event) {
+    event.preventDefault();
+    const username = document.querySelector('#span2Username').value;
+    alert('Username changed');
+    console.log(username);
+    return username;
+};
+
+
 
 export default ProfilPage;
