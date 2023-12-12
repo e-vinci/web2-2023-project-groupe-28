@@ -40,7 +40,7 @@ function renderNavbar() {
   <div class="navbar bg-base-100" style="background: transparent;">
 
 <div class="navbar-start">
-<button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rank">Rank</button>
+<button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rank" style="margin-left: 3mm;">Rank</button>
 <button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rule">Rules</button>
 </div>
 
