@@ -22,6 +22,7 @@ const Navbar = () => {
 
     <div class="navbar-end">
     
+    <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/profil" style="margin-right: 3mm;">profil</button>
       <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/login" style="margin-right: 3mm;">Login</button>
       <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/register">Register</button>
 
