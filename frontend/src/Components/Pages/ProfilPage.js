@@ -41,7 +41,7 @@ function renderProfilPageForm() {
 
     const span1 = document.createElement('span');
     span1.className = 'label-text';
-    span1.innerText = 'Email';
+    span1.innerText = 'Email : ';
 
     const label1Email = document.createElement('label');
     label1Email.className = 'label';
@@ -63,7 +63,7 @@ function renderProfilPageForm() {
 
     const span2 = document.createElement('span');
     span2.className = 'label-text';
-    span2.innerText = 'Username';
+    span2.innerText = 'Username : ';
 
     const label2Username = document.createElement('label');
     label2Username.className = 'label';
@@ -85,7 +85,7 @@ function renderProfilPageForm() {
 
     const span3 = document.createElement('span');
     span3.className ='label-text';
-    span3.innerText = 'score of the user';
+    span3.innerText = 'Score of the user : ';
 
     const label3Score = document.createElement('label');
     label3Score.className = 'label';
@@ -99,7 +99,7 @@ function renderProfilPageForm() {
 
     const span4 = document.createElement('span');
     span4.className = 'label-text';
-    span4.innerText = 'Number of loss games';
+    span4.innerText = 'Number of loss games : ';
 
     const label4Loss = document.createElement('label');
     label4Loss.className = 'label';
@@ -113,7 +113,7 @@ function renderProfilPageForm() {
 
     const span5 = document.createElement('span');
     span5.className = 'label-text';
-    span5.innerText = 'Number of win games';
+    span5.innerText = 'Number of win games : ';
 
     const label5Win = document.createElement('label');
     label5Win.className = 'label';
@@ -171,22 +171,21 @@ function renderProfilPageForm() {
     grow();
 }
 
+// to update later 
 function changeEmail(event) {
     event.preventDefault();
     const email = document.querySelector('#span1Email').value;
     alert('Email changed');
-    console.log(email);
     return email;
 };
 
+// to update later
 function changeUsername(event) {
     event.preventDefault();
     const username = document.querySelector('#span2Username').value;
     alert('Username changed');
-    console.log(username);
     return username;
 };
-
 
 
 export default ProfilPage;
