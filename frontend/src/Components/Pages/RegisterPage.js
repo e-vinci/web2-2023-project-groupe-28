@@ -102,6 +102,13 @@ function renderRegisterForm() {
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
 
+    const spanerror1 = document.createElement('span');
+    spanerror1.className = 'label-text-alt';
+    spanerror1.style.color = 'white';
+    spanerror1.style.textDecoration = 'underline';
+    spanerror1.style.fontWeight = 'bold'; // Make the text bold
+    spanerror1.innerText = "error : email or password is wrong !";
+
     const submit = document.createElement('input');
     submit.className = 'btn btn-outline';
     submit.value = 'Register';
@@ -124,13 +131,14 @@ function renderRegisterForm() {
     div4.appendChild(username);
     form.appendChild(div5);
     div5.appendChild(label3);
-    label3.appendChild(span3)
+    label3.appendChild(span3);
     div5.appendChild(password);
     div5.appendChild(label4);
     label4.appendChild(span4);
     div5.appendChild(confirmPassword);
     form.appendChild(div6);
     div6.appendChild(submit);
+    div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
 
     returnHomePage();

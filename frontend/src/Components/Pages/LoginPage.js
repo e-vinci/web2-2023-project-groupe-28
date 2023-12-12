@@ -81,6 +81,13 @@ function renderLoginForm() {
     const label3 = document.createElement('label');
     label3.className = 'label';
 
+    const spanerror1 = document.createElement('span');
+    spanerror1.className = 'label-text-alt';
+    spanerror1.style.color = 'white';
+    spanerror1.style.textDecoration = 'underline';
+    spanerror1.style.fontWeight = 'bold'; // Make the text bold
+    spanerror1.innerText = "error : email or password is wrong !";
+
     const registerPage = document.createElement('a');
     registerPage.className = 'label-text-alt link link-hover';
     registerPage.innerText = "Create a free account";
@@ -119,6 +126,7 @@ function renderLoginForm() {
     label2.appendChild(span2);
     div5.appendChild(password);
     div5.appendChild(label3);
+    div5.appendChild(spanerror1);
     label3.appendChild(registerPage);
     form.appendChild(div6);
     div6.appendChild(submit);

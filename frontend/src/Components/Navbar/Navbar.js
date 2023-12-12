@@ -14,7 +14,7 @@ const Navbar = () => {
 
     <div class="navbar-start">
       <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rank">Rank</button>
-      <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rule">Rules</button>
+      <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rule" style="margin-left: 3mm;">Rules</button>
     </div>
 
     <div class="navbar-center">
