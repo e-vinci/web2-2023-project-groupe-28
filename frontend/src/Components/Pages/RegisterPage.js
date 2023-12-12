@@ -2,7 +2,7 @@
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
-import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow, returnHomePage, playVideoIfPaused, renderError } from '../../utils/render';
 
 
 const RegisterPage = () => {
@@ -102,7 +102,7 @@ function renderRegisterForm() {
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
 
-    const spanerror1 = document.createElement('span');
+    const spanerror1 = document.createElement('spanError');
 
     const submit = document.createElement('input');
     submit.className = 'btn btn-outline';
@@ -146,9 +146,18 @@ async function onRegister(e) {
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd1').value;
     const passwordConfirm = document.querySelector('#pwd2').value;
-    // eslint-disable-next-line no-use-before-define
-    if (password !== passwordConfirm) return;
 
+    if (password.length < 8) {
+        renderError('Le mot de passe doit contenir au moins 8 caractères.');
+        return;
+    }
+
+    // Vérifier que le mot de passe et la confirmation correspondent
+    if (password !== passwordConfirm) {
+        renderError('Les mots de passe ne correspondent pas.');
+        return;
+    }
+    
     const options = {
         method: 'POST',
         body: JSON.stringify({
@@ -165,8 +174,11 @@ async function onRegister(e) {
     const response = await fetch('/api/auths/register', options);
   
     if (!response.ok) {
-        throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
-    }
+        if (response.status === 409) {
+            renderError(`email : ${email}\n has already been created`);
+        }
+        // throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+    } else {
 
     const authenticatedUser = await response.json();
 
@@ -177,6 +189,7 @@ async function onRegister(e) {
     Navbar();
     
     Navigate('/');
+    }
 }
 
 export default RegisterPage;
