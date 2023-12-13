@@ -2,10 +2,19 @@
 
 GET {{baseUrl}}/profil
 
-PATCH {{baseUrl}}/profil/tarik@gmail.com
+### PATCH {{baseUrl}}/profil
+PATCH {{baseUrl}}/profil/h5wmd8riz2t1ola
 Content-Type: application/json
 
 {
-    "username":"tarik test"
+    "email": "tarik2@gmail.com"
+}
+
+### PATCH {{baseUrl}}/profil
+PATCH {{baseUrl}}/profil/h5wmd8riz2t1ola
+Content-Type: application/json
+
+{
+    "username": "tarik2"
 }
 

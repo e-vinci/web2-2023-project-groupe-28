@@ -132,7 +132,10 @@ const PocketBase = require('pocketbase/cjs');
 
 const pb = new PocketBase('https://battleships.hop.sh');
 
-let currentUser;
+let currentUser = {
+  email: 'admin@admin.com',
+  password: 'Admin1234',
+};
 
 async function getUserFromEmail(email) {
   const record = await pb.collection('users').getFullList({
@@ -200,7 +203,7 @@ async function login(email, password) {
     const userFound = await getUserFromEmail(email);
     if (!userFound) return undefined;
     const authData = await pb.collection('users').authWithPassword(userFound.username, password);
-    currentUser = pb.authStore.model;
+    //currentUser = pb.authStore.model;
     console.log(`currentUser : ${currentUser}`);
     return authData;
   } catch (error) {
@@ -214,6 +217,7 @@ async function login(email, password) {
 }
 
 async function getCurrentUser() {
+  console.log(`currentUser : ${currentUser}`);
   return currentUser;
 }
 

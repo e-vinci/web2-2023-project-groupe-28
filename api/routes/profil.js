@@ -11,19 +11,18 @@ router.get('/', (req, res) => {
   return res.json(user);
 });
 
-/* patch users email update */
-router.patch('/:email', (req, res) => {
+router.patch('/:id', async (req, res) => {
   console.log('in patch');
-  const user = getCurrentUser();
-  if (!user) return res.sendStatus(404);
-  const data = {
-    id: user.id,
-    username: user.username,
-    email: user.email,
-    password: user.password,
-  };
-  const updatedUser = updateUserInfo(user, data);
-  return res.json(updatedUser);
+  
+  const newUsername = req?.body?.username;
+  if (!newUsername) return res.sendStatus(400);
+
+  // Mettre à jour l'email de l'utilisateur dans la base de données
+  const updatedUser = await updateUserInfo(req.params.id, newUsername);
+  // Vérifier si la mise à jour a réussi
+  if (updatedUser) {
+    return res.json(updatedUser);
+  }
 });
 
 module.exports = router;
