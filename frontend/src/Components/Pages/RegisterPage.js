@@ -147,17 +147,23 @@ async function onRegister(e) {
     const password = document.querySelector('#pwd1').value;
     const passwordConfirm = document.querySelector('#pwd2').value;
 
-    if (password.length < 8) {
-        renderError('Le mot de passe doit contenir au moins 8 caractères.');
+    const regex = /^[a-zA-Z0-9]{5,10}$/;
+
+    if (!regex.test(username)) {
+        renderError('username must be between 5 and 10 characters and must not have special characters');
         return;
     }
 
-    // Vérifier que le mot de passe et la confirmation correspondent
-    if (password !== passwordConfirm) {
-        renderError('Les mots de passe ne correspondent pas.');
+    if (password.length < 8) {
+        renderError('The password must contain at least 8 characters.');
         return;
     }
-    
+
+    if (password !== passwordConfirm) {
+        renderError('Passwords do not match.');
+        return;
+    }
+
     const options = {
         method: 'POST',
         body: JSON.stringify({
