@@ -2,7 +2,7 @@
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
-import { clearPage, grow, returnHomePage, playVideoIfPaused, renderError } from '../../utils/render';
+import { clearPage, grow, playVideoIfPaused, renderError } from '../../utils/render';
 
 
 const RegisterPage = () => {
