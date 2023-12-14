@@ -199,7 +199,7 @@ async function login(loginUser, password) {
     const authData = await pb.collection('users').authWithPassword(userFound.email, password);
     currentUser = pb.authStore.model;
     console.log(`currentUser : ${currentUser}`);
-    return authData;
+    return authData.record;
   } catch (error) {
     // error.name === 'ClientResponseError 400' && error.response && error.status === 400
     // Handle authentication failure

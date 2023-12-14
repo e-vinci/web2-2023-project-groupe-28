@@ -3,7 +3,8 @@ const pocketBase = require('pocketbase/cjs');
 const pb = new pocketBase('https://battleships.hop.sh');
 
 async function victory(user){
-    let userStat = await pb.collection('leaderboard').getFirstListItem(`user.id="${user.record.id}"`);
+    console.log(user);
+    let userStat = await pb.collection('leaderboard').getFirstListItem(`user.id="${user.id}"`);
 
     const record = await pb.collection('leaderboard').update(userStat.id, {
         score: userStat.score += 2,
@@ -13,7 +14,8 @@ async function victory(user){
 }
 
 async function defeat(user){
-    let userStat = await pb.collection('leaderboard').getFirstListItem(`user.id="${user.record.id}"`);
+    console.log(user);
+    let userStat = await pb.collection('leaderboard').getFirstListItem(`user.id="${user.id}"`);
 
     const record = await pb.collection('leaderboard').update(userStat.id, {
         score: userStat.score == 0 ? userStat.score : userStat.score -= 1,
