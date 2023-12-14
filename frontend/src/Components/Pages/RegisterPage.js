@@ -137,8 +137,6 @@ function renderRegisterForm() {
     div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
 
-    returnHomePage();
-
     grow();
 }
 async function onRegister(e) {
