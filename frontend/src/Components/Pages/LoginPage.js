@@ -104,6 +104,7 @@ function renderLoginForm() {
         </div>
     </main>
     */
+
   main.appendChild(div1);
   main.appendChild(returnBtn);
   div1.appendChild(div2);

@@ -126,7 +126,7 @@ function renderRegisterForm() {
     div4.appendChild(username);
     form.appendChild(div5);
     div5.appendChild(label3);
-    label3.appendChild(span3)
+    label3.appendChild(span3);
     div5.appendChild(password);
     div5.appendChild(label4);
     label4.appendChild(span4);
@@ -134,6 +134,7 @@ function renderRegisterForm() {
     div5.appendChild(spanerror1);
     form.appendChild(div6);
     div6.appendChild(submit);
+    div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
 
     grow();

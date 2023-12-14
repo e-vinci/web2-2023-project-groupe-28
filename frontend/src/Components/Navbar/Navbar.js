@@ -21,15 +21,14 @@ function renderNavbar() {
 
     <div class="navbar-start">
       <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rank">Rank</button>
-      <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rule">Rules</button>
+      <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rule" style="margin-left: 3mm;">Rules</button>
     </div>
 
     <div class="navbar-center">
     </div>
 
     <div class="navbar-end">
-    
-    <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/profil" style="margin-right: 3mm;">profil</button>
+
       <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/login" style="margin-right: 3mm;">Login</button>
       <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/register">Register</button>
 
@@ -40,18 +39,18 @@ function renderNavbar() {
   <div class="navbar bg-base-100" style="background: transparent;">
 
 <div class="navbar-start">
-<button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rank">Rank</button>
-<button id="cursor-Delete" class="btn btn-ghost" href="#" data-uri="/rule">Rules</button>
+<button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rank">Rank</button>
+<button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/rule" style="margin-left: 3mm;">Rules</button>
 </div>
 
 <div class="navbar-center">
 </div>
-<p>Hi ${authenticatedUser?.record?.username ?? authenticatedUser?.username} !</p>
+<p style={{ color: 'black' }} >Hi ${authenticatedUser?.record?.username ?? authenticatedUser?.username} !</p>
 <div class="navbar-end">
 
-<button id="neonButton" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/new" style="margin-right: 3mm;">New Page</button>
+<button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/profil" style="margin-right: 3mm;">Profil</button>
 
-<button id="neonButton" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/logout">Logout</button>
+<button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/logout">Logout</button>
 
 </div>
 </div>
