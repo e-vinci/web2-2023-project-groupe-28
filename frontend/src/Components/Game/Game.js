@@ -3,6 +3,7 @@
 /* eslint-disable no-param-reassign */
 
 import { clearPage } from '../../utils/render';
+import { getAuthenticatedUser, getAuthToken } from '../../utils/auths';
 
 const listShip = [[1,'S'],[1,'é'],[1,'b'],[1,'a'],[2,'s'],[2,'t'],[2,'i'],[3,'e'],[3,'n'],[4,'o']];
 
@@ -71,7 +72,8 @@ class InitGame{
 
                     // si le compteur interrompt le jeu
                     if(this.compteurNavireBotTouche === 20){
-                        alert("[inserer nom joueur] a gagné");
+                        alert("Félicitation, tu as gagné");
+                        sendVictory();
                     }                    
                     // empêche le bot de joueur et permet au joueur de rejouer
                     return false;          
@@ -174,7 +176,8 @@ class InitGame{
                         }                     
                     }
                     if(this.compteurNavireJoueurTouche === 20){
-                        alert("[inserer nom joueur] a perdu");
+                        alert("Dommage, tu as perdu");
+                        sendDefeat();
                     }
                 }
                 else {
@@ -329,6 +332,50 @@ class InitGame{
   
         body.innerHTML += menuTableAsString;
     }
+}
+
+async function sendDefeat(){
+    const token = getAuthToken();
+    const user = getAuthenticatedUser();
+    const response = await fetch('/api/routes/leaderboard/defeat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            user: user,
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Erreur lors de l'envoi du résultat : ${response.status} - ${response.statusText}`);
+    }
+
+    const responseData = await response.json();
+    console.log(responseData.message);
+}
+
+async function sendVictory(){
+    const token = getAuthToken();
+    const user = getAuthenticatedUser();
+    const response = await fetch('/api/routes/leaderboard/victory', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify({
+            user: user,
+        }),
+    });
+
+    if (!response.ok) {
+        throw new Error(`Erreur lors de l'envoi du résultat : ${response.status} - ${response.statusText}`);
+    }
+
+    const responseData = await response.json();
+    console.log(responseData.message);
 }
 
 export default InitGame;

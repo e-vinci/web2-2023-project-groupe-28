@@ -12,6 +12,11 @@ const getAuthenticatedUser = () => {
   return currentUser;
 };
 
+const getAuthToken = () => {
+  const user = getAuthenticatedUser();
+  return user ? user.token : undefined;
+};
+
 // permet d'enregistrer pour une clé la valeur associé
 const setAuthenticatedUser = (authenticatedUser) => {
   const serializedUser = JSON.stringify(authenticatedUser);
@@ -29,6 +34,6 @@ const clearAuthenticatedUser = () => {
 };
 
 // eslint-disable-next-line object-curly-newline
-export { getAuthenticatedUser, setAuthenticatedUser, isAuthenticated, clearAuthenticatedUser };
+export { getAuthenticatedUser, getAuthToken, setAuthenticatedUser, isAuthenticated, clearAuthenticatedUser };
 
 // on stoque les données sous forme de cookies sur le browser, mais ne sont pas sécurisé
