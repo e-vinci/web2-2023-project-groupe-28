@@ -2,7 +2,7 @@
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
-import { clearPage, grow, returnHomePage, playVideoIfPaused /* , renderPageTitle */ } from '../../utils/render';
+import { clearPage, grow, returnHomePage, playVideoIfPaused, renderError } from '../../utils/render';
 
 
 const RegisterPage = () => {
@@ -102,12 +102,7 @@ function renderRegisterForm() {
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
 
-    const spanerror1 = document.createElement('span');
-    spanerror1.className = 'label-text-alt';
-    spanerror1.style.color = 'white';
-    spanerror1.style.textDecoration = 'underline';
-    spanerror1.style.fontWeight = 'bold'; // Make the text bold
-    spanerror1.innerText = "error : email or password is wrong !";
+    const spanerror1 = document.createElement('spanError');
 
     const submit = document.createElement('input');
     submit.className = 'btn btn-outline';
@@ -136,6 +131,7 @@ function renderRegisterForm() {
     div5.appendChild(label4);
     label4.appendChild(span4);
     div5.appendChild(confirmPassword);
+    div5.appendChild(spanerror1);
     form.appendChild(div6);
     div6.appendChild(submit);
     div5.appendChild(spanerror1);
@@ -151,8 +147,28 @@ async function onRegister(e) {
     const username = document.querySelector('#username').value;
     const password = document.querySelector('#pwd1').value;
     const passwordConfirm = document.querySelector('#pwd2').value;
-    // eslint-disable-next-line no-use-before-define
-    if (password !== passwordConfirm) return;
+
+    const regex = /^[a-zA-Z0-9]{5,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(username)) {
+        renderError('username must be have minimum 5 characters and must not have special characters');
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        renderError('email is not valid');
+        return;
+    }
+
+    if (password.length < 8) {
+        renderError('The password must contain at least 8 characters.');
+        return;
+    }
+
+    if (password !== passwordConfirm) {
+        renderError('Passwords do not match.');
+        return;
+    }
 
     const options = {
         method: 'POST',
@@ -170,8 +186,12 @@ async function onRegister(e) {
     const response = await fetch('/api/auths/register', options);
   
     if (!response.ok) {
-        throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
-    }
+        if (response.status === 409) {
+            renderError(`email : ${email}\n or username : ${username}\n has already been created`);
+        } else {
+            throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
+        }
+    } else {
 
     const authenticatedUser = await response.json();
 
@@ -182,6 +202,7 @@ async function onRegister(e) {
     Navbar();
     
     Navigate('/');
+    }
 }
 
 export default RegisterPage;

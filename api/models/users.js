@@ -101,24 +101,7 @@ module.exports = {
   login,
   register,
   readOneUserFromUsername,
-}; */
-
-// eslint-disable-next-line consistent-return
-/* async function login(email, password) {
-  let authData;
-  try {
-    authData = await pb.collection('users').authWithPassword(email, password);
-    currentUser = authData;
-    return authData;
-  } catch (error) {
-    if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
-      // Handle authentication failure
-      return undefined;
-    }
-
-    // throw error;
-  }
-}
+};
 
 async function getCurrentUser() {
   return currentUser;
@@ -128,7 +111,7 @@ module.exports = {
   login,
   getCurrentUser,
 }; */
-const e = require('express');
+// const e = require('express');
 const PocketBase = require('pocketbase/cjs');
 
 const pb = new PocketBase('https://battleships.hop.sh');
@@ -143,16 +126,26 @@ async function getUserFromEmail(email) {
     filter: `email = "${email}"`,
   });
   if (record.length > 0) {
-    const user = record[0];// même chose que const username = record[0].username;
-
+    const user = record[0]; // même chose que const username = record[0].username;
     return user;
-  // eslint-disable-next-line no-else-return
+    // eslint-disable-next-line no-else-return
+  }
+  return undefined; // Aucun utilisateur trouvé avec cet email
+}
+
+async function getUserFromUsername(username) {
+  const record = await pb.collection('users').getFullList({
+    filter: `username = "${username}"`,
+  });
+  if (record.length > 0) {
+    const user = record[0]; // même chose que const username = record[0].username;
+    return user;
+    // eslint-disable-next-line no-else-return
   }
   return undefined; // Aucun utilisateur trouvé avec cet email
 }
 
 async function createDataGame(email) {
-
   const user = await getUserFromEmail(email);
   const dataGame = {
     user: user.id,
@@ -180,15 +173,15 @@ async function register(username, email, password, passwordConfirm) {
     passwordConfirm,
   };
   try {
-    const userFound = await getUserFromEmail(email);
-    if (userFound) return undefined;
-
+    const userFoundFromEmail = await getUserFromEmail(email);
+    const userFoundFromUsername = await getUserFromUsername(username);
+    if (userFoundFromEmail) return undefined;
+    if (userFoundFromUsername) return undefined;
     const record = await pb.collection('users').create(user);
     const dataGame = await createDataGame(email);
     if (!dataGame) {
       return undefined;
     }
-    console.log(`RegisterRecord : ${record}`);
     return record;
   } catch (error) {
     return undefined;
@@ -196,19 +189,21 @@ async function register(username, email, password, passwordConfirm) {
 }
 
 // eslint-disable-next-line consistent-return
-async function login(email, password) {
+async function login(loginUser, password) {
   try {
-    const userFound = await getUserFromEmail(email);
-    if (!userFound) return undefined;
-    const authData = await pb.collection('users').authWithPassword(userFound.username, password);
-    //currentUser = pb.authStore.model;
+    let userFound = await getUserFromEmail(loginUser); // loginUser = email
+    if (!userFound) {
+      userFound = await getUserFromUsername(loginUser); // loginUser = username
+      if (!userFound) return undefined;
+    }
+    const authData = await pb.collection('users').authWithPassword(userFound.email, password);
+    currentUser = pb.authStore.model;
     console.log(`currentUser : ${currentUser}`);
     return authData;
   } catch (error) {
-    if (error.name === 'ClientResponseError 400' && error.response && error.status === 400) {
-      // Handle authentication failure
-      return undefined;
-    }
+    // error.name === 'ClientResponseError 400' && error.response && error.status === 400
+    // Handle authentication failure
+    return undefined;
 
     // throw error;
   }
