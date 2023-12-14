@@ -51,13 +51,6 @@ function renderProfilPageForm() {
     span1Email.id = 'span1Email';
     span1Email.innerText = `${authenticatedUser.email}`;
 
-    const submitEmail = document.createElement('input');
-    submitEmail.value = 'Change Email';
-    submitEmail.type = 'submit';
-    submitEmail.className = 'btn btn-outline';
-    submitEmail.id = 'neonButton';
-    submitEmail.setAttribute('data-theme', 'luxury');
-
     const label2 = document.createElement('label');
     label2.className = 'label';
 
@@ -79,6 +72,14 @@ function renderProfilPageForm() {
     submitUsername.className = 'btn btn-outline';
     submitUsername.id = 'neonButton';
     submitUsername.setAttribute('data-theme', 'luxury');
+
+    const submitArrea = document.createElement('input');
+    submitArrea.value = 'Enter new Username';
+    submitArrea.type = 'text'; // Changer le type de 'hidden' à 'text'
+    submitArrea.className = 'input input-bordered';
+    submitArrea.id = 'inputUsername';
+    submitArrea.setAttribute('data-theme', 'luxury');
+    submitArrea.style.display = 'none'; // Cacher le champ de texte par défaut
 
     const label3 = document.createElement('label');
     label3.className = 'label';
@@ -132,13 +133,11 @@ function renderProfilPageForm() {
     form.appendChild(div4);
     div4.appendChild(title);
 
-    // Email label + button
+    // Email label
     div4.appendChild(label1);
     label1.appendChild(span1);
     label1.appendChild(label1Email);
     label1Email.appendChild(span1Email);
-    label1Email.appendChild(submitEmail);
-    submitEmail.addEventListener('click', changeEmail);
 
     // Username label + button
     div4.appendChild(label2);
@@ -147,6 +146,8 @@ function renderProfilPageForm() {
     label2Username.appendChild(span2Username);
     label2Username.appendChild(submitUsername);
     submitUsername.addEventListener('click', changeUsername);
+    label2Username.appendChild(submitArrea);
+
 
     // Score label
     div4.appendChild(label3);
@@ -171,21 +172,46 @@ function renderProfilPageForm() {
     grow();
 }
 
-// to update later 
-function changeEmail(event) {
-    event.preventDefault();
-    const email = document.querySelector('#span1Email').value;
-    alert('Email changed');
-    return email;
-};
+// Fonction pour changer le nom d'utilisateur en utilisant la methode PATCH de l'api router/profil
+function changeUsername(e) {
+    e.preventDefault();
+    const authenticatedUser = getAuthenticatedUser();
+    const inputUsername = document.getElementById('inputUsername');
+    const span2Username = document.getElementById('span2Username');
+    const submitUsername = document.getElementById('neonButton');
 
-// to update later
-function changeUsername(event) {
-    event.preventDefault();
-    const username = document.querySelector('#span2Username').value;
-    alert('Username changed');
-    return username;
-};
+    // Si le champ de texte est caché, on l'affiche et on change le bouton
+    if (inputUsername.style.display === 'none') {
+        inputUsername.style.display = 'block';
+        submitUsername.value = 'Submit';
+    } else {
+        // Sinon on cache le champ de texte et on change le bouton
+        inputUsername.style.display = 'none';
+        submitUsername.value = 'Change Username';
+
+        // On récupère la valeur du champ de texte
+        const newUsername = inputUsername.value;
+
+        // On fait une requête PATCH à l'api router/profil
+        fetch('http://localhost:8080/api/profil', {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authenticatedUser.token}`
+            },
+            body: JSON.stringify({ username: newUsername })
+        })
+        .then(res => res.json())
+        .then(data => {
+            // Si la requête est un succès, on change le nom d'utilisateur dans le DOM
+            if (data.success) {
+                span2Username.innerText = newUsername;
+            }
+        })
+        .catch(err => console.log(err));
+    }
+}
+
 
 
 export default ProfilPage;
