@@ -3,7 +3,7 @@
 /* eslint-disable no-param-reassign */
 
 import { clearPage } from '../../utils/render';
-import { getAuthenticatedUser, getAuthToken } from '../../utils/auths';
+import { getAuthenticatedUser } from '../../utils/auths';
 
 const listShip = [[1,'S'],[1,'é'],[1,'b'],[1,'a'],[2,'s'],[2,'t'],[2,'i'],[3,'e'],[3,'n'],[4,'o']];
 
@@ -333,15 +333,14 @@ class InitGame{
         body.innerHTML += menuTableAsString;
     }
 }
+/* eslint-disable */
 
 async function sendDefeat(){
-    const token = getAuthToken();
     const user = getAuthenticatedUser();
-    const response = await fetch('/api/routes/leaderboard/defeat', {
+    const response = await fetch('/api/leaderboard/defeat', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
             user: user,
@@ -357,13 +356,11 @@ async function sendDefeat(){
 }
 
 async function sendVictory(){
-    const token = getAuthToken();
     const user = getAuthenticatedUser();
-    const response = await fetch('/api/routes/leaderboard/victory', {
+    const response = await fetch('/api/leaderboard/victory', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
             user: user,
@@ -377,5 +374,6 @@ async function sendVictory(){
     const responseData = await response.json();
     console.log(responseData.message);
 }
+/* eslint enable */
 
 export default InitGame;
