@@ -2,7 +2,7 @@
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
-import { clearPage, grow, playVideoIfPaused, renderError } from '../../utils/render';
+import { clearPage, grow, playVideoIfPaused, renderError, returnHomePage } from '../../utils/render';
 
 
 const RegisterPage = () => {
@@ -136,6 +136,8 @@ function renderRegisterForm() {
     div6.appendChild(submit);
     div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
+
+    returnHomePage();
 
     grow();
 }

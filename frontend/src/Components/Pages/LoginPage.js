@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import { setAuthenticatedUser } from '../../utils/auths';
-import { clearPage, grow, playVideoIfPaused, renderError } from '../../utils/render';
+import { clearPage, grow, returnHomePage, playVideoIfPaused, renderError } from '../../utils/render';
 
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
@@ -128,6 +128,8 @@ function renderLoginForm() {
   registerPage.onclick = () => {
     Navigate('/register');
   };
+
+  returnHomePage();
 
   grow();
 }
