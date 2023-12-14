@@ -5,13 +5,13 @@
 import { clearPage, grow, returnHomePage } from '../../utils/render';
 import InitGame from '../Game/Game';
 import ChooseLvl from '../Game/ChooseLvl';
-import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import { getAuthenticatedUser, /* isAuthenticated */} from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 
 const GamePage = () => {
   clearPage();
   const authenticatedUser = getAuthenticatedUser();
-  if (isAuthenticated) {
+  if (!authenticatedUser) {
     alert("you must be logged in to play");
     Navigate('/login');
   } else {
