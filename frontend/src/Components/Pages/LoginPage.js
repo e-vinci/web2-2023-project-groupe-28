@@ -50,12 +50,12 @@ function renderLoginForm() {
 
   const span1 = document.createElement('span');
   span1.className = 'label-text';
-  span1.innerText = 'Email';
+  span1.innerText = 'Login User';
 
   const eMail = document.createElement('input');
   eMail.type = 'text';
-  eMail.id = 'email';
-  eMail.placeholder = 'email';
+  eMail.id = 'loginUser';
+  eMail.placeholder = 'Email or username';
   eMail.className = 'input input-bordered';
   // rajoute un required dans la balise <input type="..." id="..." placeholder="..." class="..." required/>
   eMail.required = true;
@@ -133,7 +133,7 @@ function renderLoginForm() {
 
 async function onLogin(event) {
   event.preventDefault();
-  const email = document.querySelector('#email').value;
+  const loginUser = document.querySelector('#loginUser').value;
   const password = document.querySelector('#password').value;
   const response = await fetch('/api/auths/login', {
     method: 'POST',
@@ -141,12 +141,12 @@ async function onLogin(event) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      email,
+      loginUser,
       password,
     }),
   });
   if (!response.ok) {
-    renderError('Incorrect email or password');
+    renderError('Incorrect email, username or password');
     //  throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
   } else {
     const authenticatedUser = await response.json();

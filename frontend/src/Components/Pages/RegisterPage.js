@@ -147,10 +147,15 @@ async function onRegister(e) {
     const password = document.querySelector('#pwd1').value;
     const passwordConfirm = document.querySelector('#pwd2').value;
 
-    const regex = /^[a-zA-Z0-9]{5,10}$/;
+    const regex = /^[a-zA-Z0-9]{5,}$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!regex.test(username)) {
-        renderError('username must be between 5 and 10 characters and must not have special characters');
+        renderError('username must be have minimum 5 characters and must not have special characters');
+        return;
+    }
+    if (!emailRegex.test(email)) {
+        renderError('email is not valid');
         return;
     }
 
@@ -181,9 +186,10 @@ async function onRegister(e) {
   
     if (!response.ok) {
         if (response.status === 409) {
-            renderError(`email : ${email}\n has already been created`);
+            renderError(`email : ${email}\n or username : ${username}\n has already been created`);
+        } else {
+            throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
         }
-        // throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
     } else {
 
     const authenticatedUser = await response.json();

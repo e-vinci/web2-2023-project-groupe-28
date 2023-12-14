@@ -1,6 +1,10 @@
 /* eslint-disable max-len */
 const express = require('express');
+// eslint-disable-next-line import/no-unresolved
+const PocketBase = require('pocketbase/cjs');
 const { register, login } = require('../models/users');
+
+const pb = new PocketBase('https://battleships.hop.sh');
 
 const router = express.Router();
 
@@ -22,12 +26,12 @@ router.post('/register', async (req, res) => {
 
 /* Login a user */
 router.post('/login', async (req, res) => {
-  const email = req?.body?.email?.length !== 0 ? req.body.email : undefined;
+  const loginUser = req?.body?.loginUser?.length !== 0 ? req.body.loginUser : undefined;
   const password = req?.body?.password?.length !== 0 ? req.body.password : undefined;
 
-  if (!email || !password) return res.sendStatus(400); // 400 Bad Reques
+  if (!loginUser || !password) return res.sendStatus(400); // 400 Bad Reques
 
-  const authenticatedUser = await login(email, password);
+  const authenticatedUser = await login(loginUser, password);
 
   if (!authenticatedUser) return res.sendStatus(401); // 401 Unauthorized
 
@@ -36,6 +40,7 @@ router.post('/login', async (req, res) => {
 
 /* Logout a user */
 router.get('/logout', (req, res) => {
+  pb.authStore.clear();
   req.session = null;
   return res.sendStatus(200);
 });

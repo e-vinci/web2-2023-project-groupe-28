@@ -5,7 +5,7 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "email":"unknown",
+    "loginUser":"unknown",
     "password":"admin"
 }
 
@@ -14,7 +14,7 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "email":"admin@admin.com",
+    "loginUser":"admin@admin.com",
     "password":"Admin1234"
 }
 
@@ -23,7 +23,7 @@ POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "email":"manager",
+    "loginUser":"manager",
     "password":"manager"
 }
 
@@ -38,11 +38,42 @@ Content-Type: application/json
     "passwordConfirm":"12345678"
 }
 
+### Try to register with an existing email
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"sdkjnfisnfg",
+    "email":"test@register.com",
+    "password":"12345678",
+    "passwordConfirm":"12345678"
+}
+
+### Try to register with an existing username
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username":"testRegister",
+    "email":"skjfn@kjhb.com",
+    "password":"12345678",
+    "passwordConfirm":"12345678"
+}
+
 ### try Login with a user that just registered
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 
 {
-    "email":"test@register.com",
+    "loginUser":"test@register.com",
+    "password":"12345678"
+}
+
+### try Login with a user with username 
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "loginUser":"testRegister",
     "password":"12345678"
 }
