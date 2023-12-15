@@ -232,11 +232,11 @@ async function getEmailUser() {
     if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
 
     const email = await response.json();
-    console.log('dataGame:');
+    console.log('demail:');
     console.log(email);
     return email;
   } catch (error) {
-    console.error('getDataGameUser::error: ', error);
+    console.error('getEmailUser::error: ', error);
     throw error;
   }
 }
