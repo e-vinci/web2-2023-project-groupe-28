@@ -15,7 +15,7 @@ const Footer = () => {
     const footerWrapper = document.querySelector('#footerWrapper');
     const footer = `
     <button id="neonButton" class="btn btn-outline" data-theme="luxury">fullscreen</button>
-    
+    <p style="text-align: center; color: lime;"> <i class="fas fa-exclamation-triangle" style="color: yellow;"></i> This site is in alpha and only works on Chrome <i class="fas fa-exclamation-triangle" style="color: yellow;"></i> </p>
     `;
   
     footerWrapper.innerHTML = footer;
