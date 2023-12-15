@@ -148,11 +148,11 @@ async function onRegister(e) {
     const password = document.querySelector('#pwd1').value;
     const passwordConfirm = document.querySelector('#pwd2').value;
 
-    const regex = /^[a-zA-Z0-9]{5,}$/;
+    const regex = /^[a-zA-Z0-9]{5,15}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!regex.test(username)) {
-        renderError('username must be have minimum 5 characters and must not have special characters');
+        renderError('username must be between 5 and 15 characters and must not have special characters');
         return;
     }
     if (!emailRegex.test(email)) {
