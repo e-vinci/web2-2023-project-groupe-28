@@ -128,6 +128,7 @@ function renderLoginForm() {
   registerPage.onclick = () => {
     Navigate('/register');
   };
+  returnHomePage();
 
   returnHomePage();
 

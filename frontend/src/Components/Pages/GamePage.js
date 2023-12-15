@@ -5,7 +5,7 @@
 import { clearPage, grow, returnHomePage } from '../../utils/render';
 import InitGame from '../Game/Game';
 import ChooseLvl from '../Game/ChooseLvl';
-import { getAuthenticatedUser, isAuthenticated } from '../../utils/auths';
+import { getAuthenticatedUser, /* isAuthenticated */} from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 
 const GamePage = () => {
