@@ -11,7 +11,7 @@ import Navigate from '../Router/Navigate';
 const GamePage = () => {
   clearPage();
   const authenticatedUser = getAuthenticatedUser();
-  if (isAuthenticated) {
+  if (!authenticatedUser) {
     alert("you must be logged in to play");
     Navigate('/login');
   } else {
