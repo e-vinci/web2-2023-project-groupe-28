@@ -102,6 +102,28 @@ function renderRegisterForm() {
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
 
+    const div7 = document.createElement('div');
+    div7.className = 'form-control mt-4'; // Ajoutez une marge en haut
+
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.className = 'label';
+    
+    const checkboxInput = document.createElement('input');
+    checkboxInput.type = 'checkbox';
+    checkboxInput.id = 'terms';
+    checkboxInput.required = true; // La checkbox est maintenant requise
+    
+    const spanCheckbox = document.createElement('span');
+    spanCheckbox.className = 'label-text';
+    
+    const rgpdLink = document.createElement('a');
+    rgpdLink.href = 'https://www.autoriteprotectiondonnees.be/professionnel/rgpd-?ssp=1&darkschemeovr=1&setlang=fr-BE&safesearch=moderate'; 
+    rgpdLink.target = '_blank'; 
+    rgpdLink.innerText = 'I agree to the Terms of Use and Privacy Policy';
+
+    const div8 = document.createElement('div');
+    div8.className = 'form-control mt-6';
+
     const spanerror1 = document.createElement('spanError');
 
     const submit = document.createElement('input');
@@ -110,15 +132,6 @@ function renderRegisterForm() {
     submit.type = 'submit';
     submit.id = 'neonButton';
     submit.setAttribute('data-theme', 'luxury');
-
-    const checkbox = document.createElement('input');
-    checkbox.type = 'checkbox';
-    checkbox.id = 'terms';
-    checkbox.required = true;
-
-    const labelTerm = document.createElement('label');
-    labelTerm.htmlFor = 'terms';
-    labelTerm.innerHTML = 'I agree to the <a href="/terms">Terms of Use </a>';
 
     main.appendChild(div1);
     main.appendChild(returnBtn);
@@ -142,9 +155,13 @@ function renderRegisterForm() {
     div5.appendChild(confirmPassword);
     div5.appendChild(spanerror1);
     form.appendChild(div6);
-    div6.appendChild(submit);
-    labelTerm.appendChild(checkbox);
-    div5.appendChild(labelTerm);
+    div6.appendChild(div7);
+    div7.appendChild(checkboxLabel);
+    checkboxLabel.appendChild(checkboxInput);
+    checkboxLabel.appendChild(spanCheckbox);
+    spanCheckbox.appendChild(rgpdLink);
+    form.appendChild(div8);
+    div8.appendChild(submit);
     div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
 
