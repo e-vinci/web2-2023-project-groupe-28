@@ -24,7 +24,26 @@ async function defeat(user){
     return record;
 }
 
+let nameOfUser;
+let tableName = [];
+async function bestScore(){
+    const records = await pb.collection('leaderboard').getFullList({
+        sort: '-score',
+    });
+
+    for (let i = 0; i < records.length; i++) {
+        nameOfUser = await pb.collection('users').getFirstListItem(`id="${records[i].user}"`);
+        tableName[i] = nameOfUser;
+    }
+
+    return {
+       records: records,
+       tableName: tableName
+    };
+}
+
 module.exports = {
     victory,
-    defeat
+    defeat,
+    bestScore
   };
