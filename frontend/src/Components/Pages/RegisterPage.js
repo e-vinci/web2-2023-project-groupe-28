@@ -31,7 +31,7 @@ function renderRegisterForm() {
 
     const form = document.createElement('form');
     form.className = 'card-body';
-    form.style.paddingTop = '20%';
+    form.style.paddingTop = '5%';
 
     const div4 = document.createElement('div');
     div4.className = 'form-control';
@@ -111,6 +111,15 @@ function renderRegisterForm() {
     submit.id = 'neonButton';
     submit.setAttribute('data-theme', 'luxury');
 
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = 'terms';
+    checkbox.required = true;
+
+    const labelTerm = document.createElement('label');
+    labelTerm.htmlFor = 'terms';
+    labelTerm.innerHTML = 'I agree to the <a href="/terms">Terms of Use </a>';
+
     main.appendChild(div1);
     main.appendChild(returnBtn);
     div1.appendChild(div2);
@@ -134,6 +143,8 @@ function renderRegisterForm() {
     div5.appendChild(spanerror1);
     form.appendChild(div6);
     div6.appendChild(submit);
+    labelTerm.appendChild(checkbox);
+    div5.appendChild(labelTerm);
     div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
 
