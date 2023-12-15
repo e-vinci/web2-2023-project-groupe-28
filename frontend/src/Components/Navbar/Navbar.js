@@ -45,7 +45,7 @@ function renderNavbar() {
 
 <div class="navbar-center">
 </div>
-<p style={{ color: 'black' }} >Hi ${authenticatedUser?.username} !</p>
+<p style="text-align: center; color: black; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">Hi ${authenticatedUser?.username} !</p>
 <div class="navbar-end">
 
 <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/profil" style="margin-right: 3mm;">Profil</button>

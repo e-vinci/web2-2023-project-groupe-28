@@ -305,7 +305,7 @@ class InitGame{
         grilleNavireJ = `<table>${grilleNavireJ}</table>`;
         grilleBot = `<table id="tab" style="float : right">${grilleBot}</table>`; 
 
-        const jeu = `<div class="center"> <div class="center"> ${grilleNavireJ} ${grilleBot} </div></div>`;
+        const jeu = `<div class="center"> <div class="center"> ${grilleNavireJ} </div> <div class="center"> ${grilleBot} </div></div>`;
         const jeuBis = `<div class="center">  
                             
                         </div> 
@@ -314,6 +314,7 @@ class InitGame{
                             <div> <table id="b">${recapNavire}</table> </div>  
                             <div> <table id="j">${recapNavire}</table> </div> 
                         </div>  `
+        document.querySelector('main').className = '';
 
         return jeuBis;
     }
