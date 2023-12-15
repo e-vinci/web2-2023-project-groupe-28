@@ -130,6 +130,8 @@ function renderLoginForm() {
   };
   returnHomePage();
 
+  returnHomePage();
+
   grow();
 }
 

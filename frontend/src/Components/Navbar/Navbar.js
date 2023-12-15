@@ -45,7 +45,7 @@ function renderNavbar() {
 
 <div class="navbar-center">
 </div>
-<p style={{ color: 'black' }} >Hi ${authenticatedUser?.record?.username ?? authenticatedUser?.username} !</p>
+<p style={{ color: 'black' }} >Hi ${authenticatedUser?.username} !</p>
 <div class="navbar-end">
 
 <button id="neonButton-alternative" class="btn btn-ghost" data-theme="luxury" href="#" data-uri="/profil" style="margin-right: 3mm;">Profil</button>
