@@ -21,3 +21,6 @@ Content-Type: application/json
 ### GET Game progil
 GET {{baseUrl}}/profil/testRegister
 
+### GET email
+GET {{baseUrl}}/profil/email/testRegister
+

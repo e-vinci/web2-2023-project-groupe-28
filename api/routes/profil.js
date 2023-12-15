@@ -12,6 +12,13 @@ router.get('/:character', async (req, res) => {
   return res.json(user);
 });
 
+router.get('/email/:character', async (req, res) => {
+  const user = await getUserFromUsername(req.params.character);
+  if (!user) return res.sendStatus(404);
+  console.log(user.email);
+  return res.json(user.email);
+});
+
 router.patch('/:character', async (req, res) => {
   console.log('in patch');
 
