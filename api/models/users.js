@@ -202,8 +202,8 @@ async function login(loginUser, password) {
       if (!userFound) return undefined;
     }
     const authData = await pb.collection('users').authWithPassword(userFound.email, password);
-    currentUser = pb.authStore.model;
-    console.log(`currentUser : ${currentUser}`);
+    // currentUser = pb.authStore.model;
+    // console.log(`currentUser : ${currentUser}`);
 
     console.log(`authData.record.username : ${authData.record.username}`);
     console.log(`authData.token : ${authData.token}`);
