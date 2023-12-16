@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { victory, defeat } = require('../models/leaderboard');
+const { victory, defeat, bestScore } = require('../models/leaderboard');
 
 const router = express.Router();
 
@@ -24,8 +24,12 @@ router.post('/defeat', async (req, res) => {
   return res.json(respond);
 });
 
-router.get('/login', async (req, res) => {
+router.get('/bestScore', async (req, res) => {
+    const respond = await bestScore();
 
+    if(!respond) return res.sendStatus(400); // 400 Bad Request
+
+    return res.json(respond);
 });
 
 module.exports = router;

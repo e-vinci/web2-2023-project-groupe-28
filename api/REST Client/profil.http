@@ -18,3 +18,9 @@ Content-Type: application/json
     "username": "tarik2"
 }
 
+### GET Game progil
+GET {{baseUrl}}/profil/testRegister
+
+### GET email
+GET {{baseUrl}}/profil/email/testRegister
+
