@@ -1,9 +1,16 @@
 import { getAuthenticatedUser } from '../../utils/auths';
 import { clearPage, grow, returnHomePage } from '../../utils/render';
+import Navigate from '../Router/Navigate';
 
 const ProfilPage = () => {
   clearPage();
-  renderProfilPageForm();
+  const authenticatedUser = getAuthenticatedUser();
+  if (!authenticatedUser) {
+    alert('you must be logged');
+    Navigate('/login');
+  } else {
+    renderProfilPageForm();
+  }
 };
 
 async function renderProfilPageForm() {

@@ -1,6 +1,12 @@
 /* eslint-disable no-console */
-import { setAuthenticatedUser } from '../../utils/auths';
-import { clearPage, grow, returnHomePage, playVideoIfPaused, renderError } from '../../utils/render';
+import { setAuthenticatedUser, getAuthenticatedUser } from '../../utils/auths';
+import {
+  clearPage,
+  grow,
+  returnHomePage,
+  playVideoIfPaused,
+  renderError,
+} from '../../utils/render';
 
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
@@ -8,8 +14,15 @@ import Navbar from '../Navbar/Navbar';
 const LoginPage = () => {
   playVideoIfPaused();
   clearPage();
-  // renderPageTitle('Login');
-  renderLoginForm();
+  const authenticatedUser = getAuthenticatedUser();
+  if (authenticatedUser) {
+    alert('you are already logged in');
+
+    Navigate('/');
+  } else {
+    // renderPageTitle('Login');
+    renderLoginForm();
+  }
 };
 
 function renderLoginForm() {

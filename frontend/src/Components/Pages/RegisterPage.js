@@ -1,5 +1,5 @@
 
-import { setAuthenticatedUser } from '../../utils/auths';
+import { setAuthenticatedUser, getAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
 import { clearPage, grow, playVideoIfPaused, renderError, returnHomePage } from '../../utils/render';
@@ -8,8 +8,15 @@ import { clearPage, grow, playVideoIfPaused, renderError, returnHomePage } from 
 const RegisterPage = () => {
     playVideoIfPaused();
     clearPage();
+    const authenticatedUser = getAuthenticatedUser();
+  if (authenticatedUser) {
+    alert('you are already logged in');
+    Navigate('/');
+  } else {
     // renderPageTitle('Login');
     renderRegisterForm();
+  }
+    
 };
 
 function renderRegisterForm() {
