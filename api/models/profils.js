@@ -2,17 +2,17 @@ const PocketBase = require('pocketbase/cjs');
 
 const pb = new PocketBase('https://battleships.hop.sh');
 
-const { getCurrentUser } = require('./users');
+// const { getCurrentUser } = require('./users');
 // const { getUserFromEmail } = require('./users');
 
 // function to update user data with is email
 /* eslint-disable */
-async function updateUserInfo(id, email) {
+async function updateUserInfo(id, username) {
   console.log('in fct updateUserInfo');
   try {
 
     const data = {
-      "username": email,
+      username,
     }
 
     // Mettre à jour les données de l'utilisateur trouvé
@@ -25,7 +25,19 @@ async function updateUserInfo(id, email) {
   }
 }
 
+async function getDataGame(username) {
+  
+  const idUser = await pb.collection('users').getFirstListItem(`username="${username}"`);
+  console.log('idUser:');
+  console.log(idUser);
+  const dataGame = await pb.collection('leaderboard').getFirstListItem(`user="${idUser.id}"`);
+  console.log('dataGame:');
+  console.log(dataGame);
+  return dataGame;
+}
+
 
 module.exports = {
   updateUserInfo,
+  getDataGame,
 };

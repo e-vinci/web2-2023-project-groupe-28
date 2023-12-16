@@ -2,7 +2,7 @@
 import { setAuthenticatedUser } from '../../utils/auths';
 import Navigate from '../Router/Navigate';
 import Navbar from '../Navbar/Navbar';
-import { clearPage, grow, returnHomePage, playVideoIfPaused, renderError } from '../../utils/render';
+import { clearPage, grow, playVideoIfPaused, renderError, returnHomePage } from '../../utils/render';
 
 
 const RegisterPage = () => {
@@ -31,7 +31,7 @@ function renderRegisterForm() {
 
     const form = document.createElement('form');
     form.className = 'card-body';
-    form.style.paddingTop = '20%';
+    form.style.paddingTop = '5%';
 
     const div4 = document.createElement('div');
     div4.className = 'form-control';
@@ -102,6 +102,28 @@ function renderRegisterForm() {
     const div6 = document.createElement('div');
     div6.className = 'form-control mt-6';
 
+    const div7 = document.createElement('div');
+    div7.className = 'form-control mt-4'; // Ajoutez une marge en haut
+
+    const checkboxLabel = document.createElement('label');
+    checkboxLabel.className = 'label';
+    
+    const checkboxInput = document.createElement('input');
+    checkboxInput.type = 'checkbox';
+    checkboxInput.id = 'terms';
+    checkboxInput.required = true; // La checkbox est maintenant requise
+    
+    const spanCheckbox = document.createElement('span');
+    spanCheckbox.className = 'label-text';
+    
+    const rgpdLink = document.createElement('a');
+    rgpdLink.href = 'https://www.autoriteprotectiondonnees.be/professionnel/rgpd-?ssp=1&darkschemeovr=1&setlang=fr-BE&safesearch=moderate'; 
+    rgpdLink.target = '_blank'; 
+    rgpdLink.innerText = 'I agree to the Terms of Use and Privacy Policy';
+
+    const div8 = document.createElement('div');
+    div8.className = 'form-control mt-6';
+
     const spanerror1 = document.createElement('spanError');
 
     const submit = document.createElement('input');
@@ -133,7 +155,13 @@ function renderRegisterForm() {
     div5.appendChild(confirmPassword);
     div5.appendChild(spanerror1);
     form.appendChild(div6);
-    div6.appendChild(submit);
+    div6.appendChild(div7);
+    div7.appendChild(checkboxLabel);
+    checkboxLabel.appendChild(checkboxInput);
+    checkboxLabel.appendChild(spanCheckbox);
+    spanCheckbox.appendChild(rgpdLink);
+    form.appendChild(div8);
+    div8.appendChild(submit);
     div5.appendChild(spanerror1);
     form.addEventListener('submit', onRegister);
 
@@ -148,11 +176,11 @@ async function onRegister(e) {
     const password = document.querySelector('#pwd1').value;
     const passwordConfirm = document.querySelector('#pwd2').value;
 
-    const regex = /^[a-zA-Z0-9]{5,}$/;
+    const regex = /^[a-zA-Z0-9]{5,15}$/;
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
     if (!regex.test(username)) {
-        renderError('username must be have minimum 5 characters and must not have special characters');
+        renderError('username must be between 5 and 15 characters and must not have special characters');
         return;
     }
     if (!emailRegex.test(email)) {

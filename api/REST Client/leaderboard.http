@@ -5,13 +5,43 @@ POST {{baseUrl}}/leaderboard/victory
 Content-Type: application/json
 
 {
-    "user":"c538bvaascnvh7x"
-}
+    "user":{
+        "record": {
+            "collectionId": "8mrkfnpno3b3hxr",
+            "collectionName": "users",
+            "created": "2023-12-14 15:07:02.383Z",
+            "email": "florin@gmail.com",
+            "emailVisibility": true,
+            "id": "0lp3atmb0jn51n0",
+            "updated": "2023-12-14 15:07:02.383Z",
+            "username": "florin",
+            "verified": false
+        }
+    
+    }
 
+}
 ### remove points and add one defeat
 POST {{baseUrl}}/leaderboard/defeat
 Content-Type: application/json
 
 {
-    "user":"c538bvaascnvh7x"
+    "user":{
+        "record": {
+            "collectionId": "8mrkfnpno3b3hxr",
+            "collectionName": "users",
+            "created": "2023-12-14 15:07:02.383Z",
+            "email": "florin@gmail.com",
+            "emailVisibility": true,
+            "id": "0lp3atmb0jn51n0",
+            "updated": "2023-12-14 15:07:02.383Z",
+            "username": "florin",
+            "verified": false
+        }
+    
+    }
+
 }
+
+### display the score sorted
+GET {{baseUrl}}/leaderboard/bestScore
