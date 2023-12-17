@@ -12,6 +12,11 @@ Backend of our 2023 web project named BattleShip.
 WARNING !! Node version should at least be Node --version 18
 ```
 ### Installing Node Version 18
+```
+only if your version is less than version 18 
+
+To check your current version of node enter commande : node --version in your terminal 
+```
 
 - [Node version 18.19](https://nodejs.org/download/release/v18.19.0/)
 
