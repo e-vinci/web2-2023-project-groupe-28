@@ -1,5 +1,5 @@
-# BattleShip Readme
-# comment l'installé ?
+# BattleShip FRONT-END Readme
+# 1. comment l'installé ?
 
 -cloner le repo : https://github.com/e-vinci/web2-2023-project-groupe-28
 
@@ -18,7 +18,7 @@ npm i # (equivalent de npm install)
 npm start
 ```
 
-## Modifier le frontend
+## 2. Modifier le frontend
 
 -Si vous voullez modifié le front-end il vous faut ouvrir un nouveau terminal et lancer la commande :
 ```shell
@@ -29,7 +29,7 @@ npm run tailwind #(permet de lancer tailwind qui gere l'affichage)
 npm run tailwind #(permet de lancer tailwind qui gere l'affichage)
 ```
 
-## Utiliser le front-end avec l'api
+## 3. Utiliser le front-end avec l'api
 
 -Pour cela vous devez lancer l'api avant le frontend :
 
