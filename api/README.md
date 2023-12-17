@@ -21,7 +21,7 @@ To check your current version of node enter commande : node --version in your te
 
 # How to have acces to our repo 
 
--cloner our repo : https://github.com/e-vinci/web2-2023-project-groupe-28
+-clone our repo : https://github.com/e-vinci/web2-2023-project-groupe-28
 
 -Or for the github desktop
 ```shell
