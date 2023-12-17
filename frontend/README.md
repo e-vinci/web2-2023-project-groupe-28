@@ -26,7 +26,7 @@ npm run tailwind #(permet de lancer tailwind qui gere l'affichage)
 ```
 -Ensuite dans le 2ème terminal vous lancer le frontend avec :
 ```shell
-npm run tailwind #(permet de lancer tailwind qui gere l'affichage)
+npm start
 ```
 
 ## 3. Utiliser le front-end avec l'api
