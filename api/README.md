@@ -33,8 +33,9 @@ git clone https://github.com/e-vinci/web2-2023-project-groupe-28
 
 Install dependencies
 
-```
-npm i 
+```shell
+cd api # (une fois dans fichier que vous venez de cloner)
+npm i # (equivalent de npm install)
 ```
 
 ## Getting Started
