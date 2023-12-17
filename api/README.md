@@ -8,7 +8,13 @@ Backend of our 2023 web project named BattleShip.
 
 -   [Node JS / NPM](https://nodejs.org/en/)
 
+```
 WARNING !! Node version should at least be Node --version 18
+```
+### Installing Node Version 18
+
+- [Node version 18.19](https://nodejs.org/download/release/v18.19.0/)
+
 
 ### Installing 
 
