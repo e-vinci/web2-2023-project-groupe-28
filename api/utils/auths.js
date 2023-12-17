@@ -1,18 +1,19 @@
-const jwt = require('jsonwebtoken');
-const { readOneUserFromUsername } = require('../models/users');
+/* eslint-disable import/no-unresolved */
+const PocketBase = require('pocketbase/cjs');
+const { getUserFromUsername } = require('../models/users');
 
-const jwtSecret = 'ilovemypizza!';
+const pb = new PocketBase('https://battleships.hop.sh');
 
-const authorize = (req, res, next) => {
-  const token = req.get('authorization');
+const authorize = async (req, res, next) => {
+  const token = req.get('Authorization');
   if (!token) return res.sendStatus(401);
+  pb.authStore.save(token, null);
 
   try {
-    const decoded = jwt.verify(token, jwtSecret);
-    console.log('decoded', decoded);
-    const { username } = decoded;
+    const decoded = await pb.collection('users').authRefresh();
+    const { username } = decoded.record;
 
-    const existingUser = readOneUserFromUsername(username);
+    const existingUser = getUserFromUsername(username);
 
     if (!existingUser) return res.sendStatus(401);
 
@@ -27,7 +28,7 @@ const authorize = (req, res, next) => {
 const isAdmin = (req, res, next) => {
   const { username } = req.user;
 
-  if (username !== 'admin') return res.sendStatus(403);
+  if (username !== 'Admin') return res.sendStatus(403);
   return next();
 };
 

@@ -1,22 +1,5 @@
 @baseUrl = http://localhost:3000
 
-GET {{baseUrl}}/profil
-
-### PATCH {{baseUrl}}/profil
-PATCH {{baseUrl}}/profil/h5wmd8riz2t1ola
-Content-Type: application/json
-
-{
-    "email": "tarik2@gmail.com"
-}
-
-### PATCH {{baseUrl}}/profil
-PATCH {{baseUrl}}/profil/h5wmd8riz2t1ola
-Content-Type: application/json
-
-{
-    "username": "tarik2"
-}
 
 ### GET Game progil
 GET {{baseUrl}}/profil/testRegister

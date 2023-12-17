@@ -16,7 +16,6 @@ const ProfilPage = () => {
 async function renderProfilPageForm() {
   const authenticatedUser = getAuthenticatedUser();
   const dataGame = await getDataGameUser();
-  const email = await getEmailUser();
   const main = document.querySelector('main');
 
   const returnBtn = document.createElement('button');
@@ -57,7 +56,7 @@ async function renderProfilPageForm() {
   const span1Email = document.createElement('span');
   span1Email.className = 'label-text';
   span1Email.id = 'span1Email';
-  span1Email.innerText = `${email}`;
+  span1Email.innerText = `${dataGame?.user}`;
 
   const label2 = document.createElement('label');
   label2.className = 'label';
@@ -219,7 +218,11 @@ async function renderProfilPageForm() {
 async function getDataGameUser() {
   try {
     const authenticatedUser = getAuthenticatedUser();
-    const response = await fetch(`/api/profil/${authenticatedUser.username}`);
+    const response = await fetch(`/api/profil/${authenticatedUser.username}`, {
+      headers: {
+        Authorization: authenticatedUser.token,
+      },
+    });
     if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
 
     const dataGame = await response.json();
@@ -228,22 +231,6 @@ async function getDataGameUser() {
     return dataGame;
   } catch (error) {
     console.error('getDataGameUser::error: ', error);
-    throw error;
-  }
-}
-
-async function getEmailUser() {
-  try {
-    const authenticatedUser = getAuthenticatedUser();
-    const response = await fetch(`/api/profil/email/${authenticatedUser.username}`);
-    if (!response.ok) throw new Error(`fetch error : ${response.status} : ${response.statusText}`);
-
-    const email = await response.json();
-    console.log('demail:');
-    console.log(email);
-    return email;
-  } catch (error) {
-    console.error('getEmailUser::error: ', error);
     throw error;
   }
 }

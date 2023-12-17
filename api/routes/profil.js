@@ -1,27 +1,30 @@
 /* eslint-disable consistent-return */
 /* eslint-disable no-console */
+// const PocketBase = require('pocketbase/cjs');
+
 const express = require('express');
+
+// const pb = new PocketBase('https://battleships.hop.sh');
 
 const router = express.Router();
 
 const { updateUserInfo, getDataGame } = require('../models/profils');
 const { getUserFromUsername } = require('../models/users');
+const { authorize } = require('../utils/auths');
 
-router.get('/:character', async (req, res) => {
-  const user = await getDataGame(req.params.character);
+router.get('/:character', authorize, async (req, res) => {
+  const username = req?.params?.character;
+  const tokenUser = await req?.user;
+  if (username !== tokenUser.username) return res.sendStatus(401);
+  const user = await getDataGame(username);
+  const data = user;
+  data.user = tokenUser.email;
   if (!user) return res.sendStatus(404);
 
-  return res.json(user);
+  return res.json(data);
 });
 
-router.get('/email/:character', async (req, res) => {
-  const user = await getUserFromUsername(req.params.character);
-  if (!user) return res.sendStatus(404);
-  console.log(user.email);
-  return res.json(user.email);
-});
-
-router.patch('/:character', async (req, res) => {
+router.patch('/:character', authorize, async (req, res) => {
   console.log('in patch');
 
   const username = req?.params?.character;

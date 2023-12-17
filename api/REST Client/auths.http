@@ -69,7 +69,7 @@ Content-Type: application/json
     "password":"12345678"
 }
 
-### try Login with a user with username 
+### try Login with username 
 POST {{baseUrl}}/auths/login
 Content-Type: application/json
 

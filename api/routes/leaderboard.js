@@ -1,10 +1,11 @@
 const express = require('express');
 
 const { victory, defeat, bestScore } = require('../models/leaderboard');
+const { authorize } = require('../utils/auths');
 
 const router = express.Router();
 
-router.post('/victory', async (req, res) => {
+router.post('/victory', authorize, async (req, res) => {
   const user = req?.body?.user?.length !== 0 ? req.body.user : undefined;
 
   if (!user) return res.sendStatus(400); // 400 Bad Request
@@ -14,7 +15,7 @@ router.post('/victory', async (req, res) => {
   return res.json(respond);
 });
 
-router.post('/defeat', async (req, res) => {
+router.post('/defeat', authorize, async (req, res) => {
   const user = req?.body?.user?.length !== 0 ? req.body.user : undefined;
 
   if (!user) return res.sendStatus(400); // 400 Bad Request

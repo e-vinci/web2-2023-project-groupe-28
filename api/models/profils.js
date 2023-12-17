@@ -1,9 +1,10 @@
+/* eslint-disable import/no-unresolved */
 const PocketBase = require('pocketbase/cjs');
 
 const pb = new PocketBase('https://battleships.hop.sh');
 
 // const { getCurrentUser } = require('./users');
-// const { getUserFromEmail } = require('./users');
+const { getUserFromUsername } = require('./users');
 
 // function to update user data with is email
 /* eslint-disable */
@@ -27,12 +28,9 @@ async function updateUserInfo(id, username) {
 
 async function getDataGame(username) {
   
-  const idUser = await pb.collection('users').getFirstListItem(`username="${username}"`);
-  console.log('idUser:');
-  console.log(idUser);
+  const idUser = await getUserFromUsername(username);
   const dataGame = await pb.collection('leaderboard').getFirstListItem(`user="${idUser.id}"`);
-  console.log('dataGame:');
-  console.log(dataGame);
+
   return dataGame;
 }
 

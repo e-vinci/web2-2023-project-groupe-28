@@ -342,6 +342,7 @@ async function sendDefeat(){
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: user.token,
         },
         body: JSON.stringify({
             user: user,
@@ -362,6 +363,7 @@ async function sendVictory(){
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            Authorization: user.token,
         },
         body: JSON.stringify({
             user: user,
